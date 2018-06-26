@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
  * @author Administrateur
  */
 public class Configuration {
-    private static final String BUNDLE_NAME = "fr.eni.clinique.properties"; 
+    private static final String BUNDLE_NAME = "fr.eni.clinique.properties.settings"; 
 	
 	//Objet qui va lire le contenu du fichier
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);

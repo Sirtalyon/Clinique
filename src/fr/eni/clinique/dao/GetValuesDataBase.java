@@ -19,24 +19,29 @@ import java.util.logging.Logger;
  * @author Administrateur
  */
 public class GetValuesDataBase {
-    
-    
-    public boolean getIdentifiant(String user, String password){
-        ConnexionDataBase co = new ConnexionDataBase();                
+
+    public boolean getIdentifiant(String user, String password) {
+        ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
         PreparedStatement stm;
         ResultSet rs;
         try {
-            stm = connect.prepareStatement("select * from Personnels where nom=" + user + " and MotPasse=" + password);
-            rs = stm.executeQuery();
-            if(rs.next())
-                return true;
-            else
-                return false;            
+            if (user != null && password != null) {
+                stm = connect.prepareStatement("select * from Personnels where Nom='" + user + "' and MotPasse='" + password + "'");
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }else
+            {
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
-    
+
 }

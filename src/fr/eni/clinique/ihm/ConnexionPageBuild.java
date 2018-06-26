@@ -15,6 +15,22 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
     private String nameValue;
     private String passWordValue;
+
+    public String getNameValue() {
+        return nameValue;
+    }
+
+    public void setNameValue(String nameValue) {
+        this.nameValue = nameValue;
+    }
+
+    public String getPassWordValue() {
+        return passWordValue;
+    }
+
+    public void setPassWordValue(String passWordValue) {
+        this.passWordValue = passWordValue;
+    }
     private boolean resultDatabase;
 
     /**
@@ -110,21 +126,26 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
     private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
         GetValuesDataBase getDatabase = new GetValuesDataBase();
-        resultDatabase = getDatabase.getIdentifiant(nameValue, passWordValue);
+        setNameValue(nameTextField.getText());
+        setPassWordValue(PassWordTextField.getText());
+        resultDatabase = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
 
         if (resultDatabase) {
-            nameLabel.setText("testOk");
+            nameTextField.setText("testOk");
+        }else
+        {
+            nameTextField.setText("testNOk");
         }
     }//GEN-LAST:event_validateButonActionPerformed
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
         // TODO add your handling code here:
-        nameValue = nameTextField.getText();
+        setNameValue(nameTextField.getText());
     }//GEN-LAST:event_nameTextFieldActionPerformed
 
     private void PassWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassWordTextFieldActionPerformed
         // TODO add your handling code here:
-        passWordValue = PassWordTextField.getText();
+        setPassWordValue(PassWordTextField.getText());
     }//GEN-LAST:event_PassWordTextFieldActionPerformed
 
     /**
