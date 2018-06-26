@@ -14,19 +14,39 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Administrateur
+ * @author plaurent2017
  */
 public class ConnexionDataBaseTest {
     
     public ConnexionDataBaseTest() {
     }
     
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of main method, of class ConnexionDataBase.
+     */
     @Test
     public void testMain() throws Exception {
         System.out.println("main");
         String[] args = null;
         ConnexionDataBase.main(args);
-        
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

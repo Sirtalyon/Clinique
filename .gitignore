@@ -1,18 +1,20 @@
-
+/dist/
 build\.xml
 
-build/classes/\.netbeans_automatic_build
+build/built-jar\.properties
 
-build/classes/\.netbeans_update_resources
+build/test/classes/\.netbeans_automatic_build
+
+build/test/classes/\.netbeans_update_resources
 
 nbproject/build-impl\.xml
 
 nbproject/genfiles\.properties
-
-nbproject/private/config\.properties
 
 nbproject/private/private\.properties
 
 nbproject/project\.properties
 
 nbproject/project\.xml
+
+README\.md
