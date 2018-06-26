@@ -12,10 +12,11 @@ import fr.eni.clinique.dao.GetValuesDataBase;
  * @author plaurent2017
  */
 public class ConnexionPageBuild extends javax.swing.JFrame {
-    
+
     private String nameValue;
     private String passWordValue;
     private boolean resultDatabase;
+
     /**
      * Creates new form ConnexionPageBuild
      */
@@ -110,9 +111,9 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
         GetValuesDataBase getDatabase = new GetValuesDataBase();
         resultDatabase = getDatabase.getIdentifiant(nameValue, passWordValue);
-        
-        if(resultDatabase){
-            
+
+        if (resultDatabase) {
+            nameLabel.setText("testOk");
         }
     }//GEN-LAST:event_validateButonActionPerformed
 
@@ -123,7 +124,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
     private void PassWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassWordTextFieldActionPerformed
         // TODO add your handling code here:
-       passWordValue = PassWordTextField.getText();
+        passWordValue = PassWordTextField.getText();
     }//GEN-LAST:event_PassWordTextFieldActionPerformed
 
     /**
@@ -160,7 +161,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             }
         });
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PassWordTextField;
