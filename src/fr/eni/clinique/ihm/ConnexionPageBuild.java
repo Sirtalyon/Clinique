@@ -5,12 +5,17 @@
  */
 package fr.eni.clinique.ihm;
 
+import fr.eni.clinique.dao.GetValuesDataBase;
+
 /**
  *
  * @author plaurent2017
  */
 public class ConnexionPageBuild extends javax.swing.JFrame {
     
+    private String nameValue;
+    private String passWordValue;
+    private boolean resultDatabase;
     /**
      * Creates new form ConnexionPageBuild
      */
@@ -28,11 +33,11 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        passeWordLabel = new javax.swing.JLabel();
+        validateButon = new javax.swing.JButton();
+        nameTextField = new javax.swing.JTextField();
+        PassWordTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connexion");
@@ -40,28 +45,28 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        jLabel1.setText("Nom");
+        nameLabel.setText("Nom");
 
-        jLabel2.setText("Mot de passe");
+        passeWordLabel.setText("Mot de passe");
 
-        jButton1.setText("Valider");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        validateButon.setText("Valider");
+        validateButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                validateButonActionPerformed(evt);
             }
         });
 
-        jTextField1.setName("NameField"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nameTextField.setName("NameField"); // NOI18N
+        nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nameTextFieldActionPerformed(evt);
             }
         });
 
-        jTextField2.setName("PasswordField"); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        PassWordTextField.setName("PasswordField"); // NOI18N
+        PassWordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                PassWordTextFieldActionPerformed(evt);
             }
         });
 
@@ -72,15 +77,15 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(validateButon)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(nameLabel)
+                            .addComponent(passeWordLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PassWordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,33 +93,38 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(nameLabel)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(passeWordLabel)
+                    .addComponent(PassWordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(validateButon)
                 .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
+        GetValuesDataBase getDatabase = new GetValuesDataBase();
+        resultDatabase = getDatabase.getIdentifiant(nameValue, passWordValue);
+        
+        if(resultDatabase){
+            
+        }
+    }//GEN-LAST:event_validateButonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
         // TODO add your handling code here:
-        String nameValue = jTextField1.getText();
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        nameValue = nameTextField.getText();
+    }//GEN-LAST:event_nameTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void PassWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassWordTextFieldActionPerformed
         // TODO add your handling code here:
-       String passWordValue = jTextField2.getText();
-    }//GEN-LAST:event_jTextField2ActionPerformed
+       passWordValue = PassWordTextField.getText();
+    }//GEN-LAST:event_PassWordTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +163,10 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField PassWordTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel passeWordLabel;
+    private javax.swing.JButton validateButon;
     // End of variables declaration//GEN-END:variables
 }
