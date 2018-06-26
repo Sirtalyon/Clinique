@@ -7,13 +7,22 @@ import java.sql.SQLException;
 
 public class ConnexionDataBase {
 
-    public static void main(String[] args){
+    public ConnexionDataBase() {
+        connectionToDataBase();
+    }
+
+    Connection co = null;
+
+    public Connection getCo() {
+        return co;
+    }
+    
+    public void connectionToDataBase(){
         try {
             Class.forName(Configuration.getValue("driver"));
         } catch (ClassNotFoundException e) {
             System.out.println("Erreur pendant le chargement du pilote");
         }
-        Connection co = null;
         String url = Configuration.getValue("url");
         String user = Configuration.getValue("user");
         String password = Configuration.getValue("password");
