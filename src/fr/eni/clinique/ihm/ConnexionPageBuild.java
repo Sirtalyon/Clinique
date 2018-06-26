@@ -15,6 +15,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
     private String nameValue;
     private String passWordValue;
+    private String getRoleUser;
 
     public String getNameValue() {
         return nameValue;
@@ -31,7 +32,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     public void setPassWordValue(String passWordValue) {
         this.passWordValue = passWordValue;
     }
-    private boolean resultDatabase;
+    private boolean getIdUser;
 
     /**
      * Creates new form ConnexionPageBuild
@@ -128,9 +129,11 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         GetValuesDataBase getDatabase = new GetValuesDataBase();
         setNameValue(nameTextField.getText());
         setPassWordValue(PassWordTextField.getText());
-        resultDatabase = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
+        getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
+        getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
+       
 
-        if (resultDatabase) {
+        if (getIdUser) {
             nameTextField.setText("testOk");
         }else
         {
