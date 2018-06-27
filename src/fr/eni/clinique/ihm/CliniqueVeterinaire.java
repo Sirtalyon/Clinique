@@ -5,7 +5,12 @@
  */
 package fr.eni.clinique.ihm;
 
+import fr.eni.clinique.bo.Personnel;
 import fr.eni.clinique.dao.EnumRole;
+import fr.eni.clinique.dao.GetValuesDataBase;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,7 +36,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
         PanelGestionPersonnel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablePersonnel = new javax.swing.JTable();
         buttonAdd = new javax.swing.JButton();
         buttonDel = new javax.swing.JButton();
         buttonReinit = new javax.swing.JButton();
@@ -49,8 +54,9 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         setTitle("Clinique Veterinaire");
         setName("CliniqueVeterinaire"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablePersonnel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"", null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -60,7 +66,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
                 "Nom", "Rôle", "Mot de Passe"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablePersonnel);
 
         buttonAdd.setText("Ajouter");
 
@@ -134,6 +140,16 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         ClinqueVeterinaire.add(Agenda);
 
         GestionPersonnel.setText("Gestion du personnel");
+        GestionPersonnel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GestionPersonnelMouseClicked(evt);
+            }
+        });
+        GestionPersonnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestionPersonnelActionPerformed(evt);
+            }
+        });
         ClinqueVeterinaire.add(GestionPersonnel);
 
         setJMenuBar(ClinqueVeterinaire);
@@ -153,13 +169,38 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
-        // TODO add your handling code here:
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_DeconnexionActionPerformed
 
 
     private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonReinitActionPerformed
+
+    private void GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionPersonnelActionPerformed
+
+
+    }//GEN-LAST:event_GestionPersonnelActionPerformed
+
+    private void GestionPersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionPersonnelMouseClicked
+        // TODO add your handling code here:
+        PanelGestionPersonnel.setVisible(true);
+        GetValuesDataBase getall = new GetValuesDataBase();
+        List<Personnel> persos = new ArrayList<>();
+        persos = getall.getAll();
+        DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
+        
+        TablePersonnel.setModel(tm);
+        
+        int i = 0;
+        for (Personnel perso : persos) {
+            TablePersonnel.setValueAt(perso.getNom(), i, 0);
+            TablePersonnel.setValueAt(perso.getRole(), i, 1);
+            TablePersonnel.setValueAt(perso.getMotDePase(), i, 2);
+            i++;
+
+        }
+    }//GEN-LAST:event_GestionPersonnelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,6 +232,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     public void initFrame(String role) {
         AfficherEcranRole(role);
         this.setVisible(true);
+        PanelGestionPersonnel.setVisible(false);
     }
 
     public void AfficherEcranRole(String role) {
@@ -223,10 +265,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     private javax.swing.JMenu GestionRDV;
     private javax.swing.JPanel PanelGestionPersonnel;
     private javax.swing.JMenuItem PriseRDV;
+    private javax.swing.JTable TablePersonnel;
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDel;
     private javax.swing.JButton buttonReinit;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

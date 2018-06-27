@@ -5,12 +5,15 @@
  */
 package fr.eni.clinique.dao;
 
+import fr.eni.clinique.bo.Personnel;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,6 +64,34 @@ public class GetValuesDataBase {
             } else {
                 return null;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<Personnel> getAll() {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        List<Personnel> persos = new ArrayList<>();
+        Personnel perso = new Personnel();
+        try {
+
+            stm = connect.prepareStatement("select * from Personnels");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                perso = new Personnel();
+                perso.setNom(rs.getString("Nom"));
+                perso.setRole(rs.getString("Role"));
+                perso.setMotDePase(rs.getString("MotPasse"));
+                persos.add(perso);
+
+            }
+            return persos;
+
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return null;

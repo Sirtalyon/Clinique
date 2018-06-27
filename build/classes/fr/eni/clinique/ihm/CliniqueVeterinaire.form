@@ -53,6 +53,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Gestion du personnel"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="GestionPersonnelMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GestionPersonnelActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
@@ -138,11 +142,17 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="TablePersonnel">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
-                    <Column editable="true" title="Nom" type="java.lang.Object"/>
+                  <Table columnCount="3" rowCount="5">
+                    <Column editable="true" title="Nom" type="java.lang.Object">
+                      <Data value=""/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
                     <Column editable="true" title="R&#xf4;le" type="java.lang.Object"/>
                     <Column editable="true" title="Mot de Passe" type="java.lang.Object"/>
                   </Table>
