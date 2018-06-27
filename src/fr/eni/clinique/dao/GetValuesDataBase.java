@@ -34,8 +34,7 @@ public class GetValuesDataBase {
                 } else {
                     return false;
                 }
-            }else
-            {
+            } else {
                 return false;
             }
         } catch (SQLException ex) {
@@ -43,7 +42,7 @@ public class GetValuesDataBase {
             return false;
         }
     }
-    
+
     public String getRole(String user, String password) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
@@ -54,21 +53,18 @@ public class GetValuesDataBase {
                 stm = connect.prepareStatement("select Role from Personnels where Nom='" + user + "' and MotPasse='" + password + "'");
                 rs = stm.executeQuery();
                 if (rs.next()) {
-                    while(rs.next()){
-                        return rs.getString("Role");
-                    }
+                    return rs.getString("Role");
+
                 } else {
                     return null;
                 }
-            }else
-            {
+            } else {
                 return null;
             }
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        return null;
     }
 
 }

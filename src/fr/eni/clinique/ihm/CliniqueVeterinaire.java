@@ -27,6 +27,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelGestionPersonnel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        buttonAdd = new javax.swing.JButton();
+        buttonDel = new javax.swing.JButton();
+        buttonReinit = new javax.swing.JButton();
         ClinqueVeterinaire = new javax.swing.JMenuBar();
         Fichier = new javax.swing.JMenu();
         Deconnexion = new javax.swing.JMenuItem();
@@ -40,6 +46,60 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clinique Veterinaire");
         setName("CliniqueVeterinaire"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nom", "Rôle", "Mot de Passe"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        buttonAdd.setText("Ajouter");
+
+        buttonDel.setText("Supprimer");
+
+        buttonReinit.setText("Réinitialiser");
+        buttonReinit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReinitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelGestionPersonnelLayout = new javax.swing.GroupLayout(PanelGestionPersonnel);
+        PanelGestionPersonnel.setLayout(PanelGestionPersonnelLayout);
+        PanelGestionPersonnelLayout.setHorizontalGroup(
+            PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelGestionPersonnelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+                    .addGroup(PanelGestionPersonnelLayout.createSequentialGroup()
+                        .addComponent(buttonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonDel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonReinit)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        PanelGestionPersonnelLayout.setVerticalGroup(
+            PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelGestionPersonnelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                    .addComponent(buttonReinit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         ClinqueVeterinaire.setToolTipText("");
 
@@ -80,11 +140,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+            .addComponent(PanelGestionPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addComponent(PanelGestionPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,6 +153,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DeconnexionActionPerformed
+
+    private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonReinitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +202,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     private javax.swing.JMenuItem GestionClient;
     private javax.swing.JMenu GestionPersonnel;
     private javax.swing.JMenu GestionRDV;
+    private javax.swing.JPanel PanelGestionPersonnel;
     private javax.swing.JMenuItem PriseRDV;
+    private javax.swing.JButton buttonAdd;
+    private javax.swing.JButton buttonDel;
+    private javax.swing.JButton buttonReinit;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

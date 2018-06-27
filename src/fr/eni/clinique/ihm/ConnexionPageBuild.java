@@ -86,7 +86,6 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             }
         });
 
-        PassWordTextField.setText("PassWordTextField");
         PassWordTextField.setName("PassWordTextField"); // NOI18N
         PassWordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,13 +133,12 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
         GetValuesDataBase getDatabase = new GetValuesDataBase();
         setNameValue(nameTextField.getText());
-        setPassWordValue(PassWordTextField.getSelectedText());
+        setPassWordValue(PassWordTextField.getText());
         getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
         getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
        
 
         if (getIdUser) {
-            nameTextField.setText("testOk");
             switch(getRoleUser)
             {
                 case EnumRole.ADM:
@@ -157,6 +155,9 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                     break;
             }
             this.dispose();
+            new CliniqueVeterinaire().setVisible(true);
+            
+            
         }else
         {
             nameTextField.setText("testNOk");
