@@ -9,6 +9,11 @@ package fr.eni.clinique.dao;
  *
  * @author Administrateur
  */
-public class DALException {
+public class DALException extends Exception{
     
+    private static final long serialVersionUID = 3946403277377688014L;
+
+	public DALException(String message) {
+		super("DALException: " + message);
+	}
 }

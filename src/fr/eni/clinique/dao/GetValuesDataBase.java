@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class GetValuesDataBase {
 
-    public boolean getIdentifiant(String user, String password) throws DALException {
+    public boolean getIdentifiant(String user, String password) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
         PreparedStatement stm;
@@ -42,6 +42,33 @@ public class GetValuesDataBase {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    
+    public String getRole(String user, String password) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        try {
+            if (user != null && password != null) {
+                stm = connect.prepareStatement("select Role from Personnels where Nom='" + user + "' and MotPasse='" + password + "'");
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    while(rs.next()){
+                        return rs.getString("Role");
+                    }
+                } else {
+                    return null;
+                }
+            }else
+            {
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return null;
     }
 
 }

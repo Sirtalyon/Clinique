@@ -41,9 +41,9 @@
                           <Component id="passeWordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nameTextField" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="PassWordTextField" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nameTextField" pref="140" max="32767" attributes="0"/>
+                          <Component id="PassWordTextField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -62,11 +62,11 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="passeWordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="PassWordTextField" alignment="3" pref="22" max="32767" attributes="0"/>
+                  <Component id="PassWordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="validateButon" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,9 +98,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTextFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="PassWordTextField">
+    <Component class="javax.swing.JPasswordField" name="PassWordTextField">
       <Properties>
-        <Property name="name" type="java.lang.String" value="PasswordField" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="PassWordTextField"/>
+        <Property name="name" type="java.lang.String" value="PassWordTextField" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PassWordTextFieldActionPerformed"/>

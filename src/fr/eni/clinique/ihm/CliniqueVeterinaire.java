@@ -27,45 +27,49 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        ClinqueVeterinaire = new javax.swing.JMenuBar();
+        Fichier = new javax.swing.JMenu();
+        Deconnexion = new javax.swing.JMenu();
+        Fermer = new javax.swing.JMenu();
+        GestionRDV = new javax.swing.JMenu();
+        PriseRDV = new javax.swing.JMenu();
+        GestionClient = new javax.swing.JMenu();
+        Agenda = new javax.swing.JMenu();
+        GestionPersonnel = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clinique Veterinaire");
+        setName("CliniqueVeterinaire"); // NOI18N
 
-        jMenu1.setText("Fichier");
+        ClinqueVeterinaire.setToolTipText("");
 
-        jMenu7.setText("Déconnexion");
-        jMenu1.add(jMenu7);
+        Fichier.setText("Fichier");
 
-        jMenu8.setText("Fermer");
-        jMenu1.add(jMenu8);
+        Deconnexion.setText("Déconnexion");
+        Fichier.add(Deconnexion);
 
-        jMenuBar1.add(jMenu1);
+        Fermer.setText("Fermer");
+        Fichier.add(Fermer);
 
-        jMenu2.setText("Gestion des rendez vous");
+        ClinqueVeterinaire.add(Fichier);
 
-        jMenu5.setText("Prise de rendez vous");
-        jMenu2.add(jMenu5);
+        GestionRDV.setText("Gestion des rendez vous");
 
-        jMenu6.setText("Gestion des clients");
-        jMenu2.add(jMenu6);
+        PriseRDV.setText("Prise de rendez vous");
+        GestionRDV.add(PriseRDV);
 
-        jMenuBar1.add(jMenu2);
+        GestionClient.setText("Gestion des clients");
+        GestionRDV.add(GestionClient);
 
-        jMenu3.setText("Agenda");
-        jMenuBar1.add(jMenu3);
+        ClinqueVeterinaire.add(GestionRDV);
 
-        jMenu4.setText("Gestion du personnel");
-        jMenuBar1.add(jMenu4);
+        Agenda.setText("Agenda");
+        ClinqueVeterinaire.add(Agenda);
 
-        setJMenuBar(jMenuBar1);
+        GestionPersonnel.setText("Gestion du personnel");
+        ClinqueVeterinaire.add(GestionPersonnel);
+
+        setJMenuBar(ClinqueVeterinaire);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,14 +121,14 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu Agenda;
+    private javax.swing.JMenuBar ClinqueVeterinaire;
+    private javax.swing.JMenu Deconnexion;
+    private javax.swing.JMenu Fermer;
+    private javax.swing.JMenu Fichier;
+    private javax.swing.JMenu GestionClient;
+    private javax.swing.JMenu GestionPersonnel;
+    private javax.swing.JMenu GestionRDV;
+    private javax.swing.JMenu PriseRDV;
     // End of variables declaration//GEN-END:variables
 }
