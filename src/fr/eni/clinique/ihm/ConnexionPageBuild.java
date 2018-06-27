@@ -156,6 +156,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                     isVeterinaire = true;
                     break;
             }
+            this.dispose();
         }else
         {
             nameTextField.setText("testNOk");
