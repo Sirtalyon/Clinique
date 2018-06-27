@@ -196,16 +196,16 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     public void AfficherEcranRole(String role) {
         switch (role) {
             case EnumRole.ADM:
-                Agenda.setVisible(false);
                 break;
             case EnumRole.AST:
-
+                Agenda.setVisible(false);
+                GestionPersonnel.setVisible(false);
                 break;
             case EnumRole.SEC:
-
+                GestionPersonnel.setVisible(false);
                 break;
             case EnumRole.VET:
-
+                GestionPersonnel.setVisible(false);
                 break;
 
         }

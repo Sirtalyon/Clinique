@@ -21,6 +21,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     private boolean isVeterinaire;
     private boolean isSecretaire;
     private boolean isAssistant;
+    CliniqueVeterinaire clinique = new CliniqueVeterinaire();
 
     public String getNameValue() {
         return nameValue;
@@ -153,10 +154,8 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                     isVeterinaire = true;
                     break;
             }
-            this.dispose();
-            new CliniqueVeterinaire().setVisible(true);
-            
-            
+            this.dispose();            
+            clinique.initFrame(getRoleUser);
         }else
         {
             nameTextField.setText("testNOk");
