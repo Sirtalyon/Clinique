@@ -137,12 +137,10 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         setPassWordValue(PassWordTextField.getSelectedText());
         getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
         getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
-       
 
         if (getIdUser) {
             nameTextField.setText("testOk");
-            switch(getRoleUser)
-            {
+            switch (getRoleUser) {
                 case EnumRole.ADM:
                     isAdmin = true;
                     break;
@@ -157,8 +155,8 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                     break;
             }
             this.dispose();
-        }else
-        {
+            
+        } else {
             nameTextField.setText("testNOk");
         }
     }//GEN-LAST:event_validateButonActionPerformed
