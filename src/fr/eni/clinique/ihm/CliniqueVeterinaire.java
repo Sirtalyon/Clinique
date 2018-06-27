@@ -5,6 +5,8 @@
  */
 package fr.eni.clinique.ihm;
 
+import fr.eni.clinique.dao.EnumRole;
+
 /**
  *
  * @author plaurent2017
@@ -154,6 +156,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DeconnexionActionPerformed
 
+
     private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonReinitActionPerformed
@@ -183,14 +186,30 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CliniqueVeterinaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CliniqueVeterinaire().setVisible(true);
-            }
-        });
+    public void initFrame(String role) {
+        AfficherEcranRole(role);
+        this.setVisible(true);
+    }
+
+    public void AfficherEcranRole(String role) {
+        switch (role) {
+            case EnumRole.ADM:
+                Agenda.setVisible(false);
+                break;
+            case EnumRole.AST:
+
+                break;
+            case EnumRole.SEC:
+
+                break;
+            case EnumRole.VET:
+
+                break;
+
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
