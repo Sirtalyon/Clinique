@@ -136,7 +136,6 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         setPassWordValue(PassWordTextField.getText());
         getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
         getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
-       
 
         if (getIdUser) {
             switch(getRoleUser)
