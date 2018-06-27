@@ -12,16 +12,19 @@
             <Property name="text" type="java.lang.String" value="Fichier"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="Deconnexion">
+            <MenuItem class="javax.swing.JMenuItem" name="Deconnexion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="D&#xe9;connexion"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="Fermer">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeconnexionActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Fermer">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fermer"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="GestionRDV">
@@ -29,16 +32,16 @@
             <Property name="text" type="java.lang.String" value="Gestion des rendez vous"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="PriseRDV">
+            <MenuItem class="javax.swing.JMenuItem" name="PriseRDV">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Prise de rendez vous"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="GestionClient">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="GestionClient">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gestion des clients"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="Agenda">

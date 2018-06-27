@@ -29,11 +29,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
         ClinqueVeterinaire = new javax.swing.JMenuBar();
         Fichier = new javax.swing.JMenu();
-        Deconnexion = new javax.swing.JMenu();
-        Fermer = new javax.swing.JMenu();
+        Deconnexion = new javax.swing.JMenuItem();
+        Fermer = new javax.swing.JMenuItem();
         GestionRDV = new javax.swing.JMenu();
-        PriseRDV = new javax.swing.JMenu();
-        GestionClient = new javax.swing.JMenu();
+        PriseRDV = new javax.swing.JMenuItem();
+        GestionClient = new javax.swing.JMenuItem();
         Agenda = new javax.swing.JMenu();
         GestionPersonnel = new javax.swing.JMenu();
 
@@ -46,6 +46,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         Fichier.setText("Fichier");
 
         Deconnexion.setText("Déconnexion");
+        Deconnexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeconnexionActionPerformed(evt);
+            }
+        });
         Fichier.add(Deconnexion);
 
         Fermer.setText("Fermer");
@@ -85,6 +90,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeconnexionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -123,12 +132,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Agenda;
     private javax.swing.JMenuBar ClinqueVeterinaire;
-    private javax.swing.JMenu Deconnexion;
-    private javax.swing.JMenu Fermer;
+    private javax.swing.JMenuItem Deconnexion;
+    private javax.swing.JMenuItem Fermer;
     private javax.swing.JMenu Fichier;
-    private javax.swing.JMenu GestionClient;
+    private javax.swing.JMenuItem GestionClient;
     private javax.swing.JMenu GestionPersonnel;
     private javax.swing.JMenu GestionRDV;
-    private javax.swing.JMenu PriseRDV;
+    private javax.swing.JMenuItem PriseRDV;
     // End of variables declaration//GEN-END:variables
 }
