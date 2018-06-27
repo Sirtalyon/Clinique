@@ -17,6 +17,10 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     private String nameValue;
     private String passWordValue;
     private String getRoleUser;
+    private boolean isAdmin;
+    private boolean isVeterinaire;
+    private boolean isSecretaire;
+    private boolean isAssistant;
 
     public String getNameValue() {
         return nameValue;
@@ -56,7 +60,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         passeWordLabel = new javax.swing.JLabel();
         validateButon = new javax.swing.JButton();
         nameTextField = new javax.swing.JTextField();
-        PassWordTextField = new javax.swing.JTextField();
+        PassWordTextField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connexion");
@@ -82,7 +86,8 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             }
         });
 
-        PassWordTextField.setName("PasswordField"); // NOI18N
+        PassWordTextField.setText("PassWordTextField");
+        PassWordTextField.setName("PassWordTextField"); // NOI18N
         PassWordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PassWordTextFieldActionPerformed(evt);
@@ -102,9 +107,9 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                             .addComponent(nameLabel)
                             .addComponent(passeWordLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PassWordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(PassWordTextField))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,10 +122,10 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passeWordLabel)
-                    .addComponent(PassWordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(PassWordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validateButon)
-                .addGap(53, 53, 53))
+                .addGap(56, 56, 56))
         );
 
         pack();
@@ -129,7 +134,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
     private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
         GetValuesDataBase getDatabase = new GetValuesDataBase();
         setNameValue(nameTextField.getText());
-        setPassWordValue(PassWordTextField.getText());
+        setPassWordValue(PassWordTextField.getSelectedText());
         getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
         getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
        
@@ -138,7 +143,17 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             nameTextField.setText("testOk");
             switch(getRoleUser)
             {
-                case EnumRole.adm:
+                case EnumRole.ADM:
+                    isAdmin = true;
+                    break;
+                case EnumRole.AST:
+                    isAssistant = true;
+                    break;
+                case EnumRole.SEC:
+                    isSecretaire = true;
+                    break;
+                case EnumRole.VET:
+                    isVeterinaire = true;
                     break;
             }
         }else
@@ -154,7 +169,6 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
     private void PassWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassWordTextFieldActionPerformed
         // TODO add your handling code here:
-        setPassWordValue(PassWordTextField.getText());
     }//GEN-LAST:event_PassWordTextFieldActionPerformed
 
     /**
@@ -194,7 +208,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField PassWordTextField;
+    private javax.swing.JPasswordField PassWordTextField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel passeWordLabel;

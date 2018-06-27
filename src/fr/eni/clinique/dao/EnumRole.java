@@ -9,9 +9,9 @@ package fr.eni.clinique.dao;
  *
  * @author plaurent2017
  */
-public enum EnumRole {
-    adm,
-    vet,
-    ast,
-    str
+public class  EnumRole {
+    public static  final String ADM = "adm";
+    public static  final String VET = "vet";
+    public static  final String AST = "ast";
+    public static  final String SEC = "sec";
 }
