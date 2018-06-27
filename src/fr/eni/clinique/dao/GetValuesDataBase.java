@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class GetValuesDataBase {
 
-    public boolean getIdentifiant(String user, String password) {
+    public boolean getIdentifiant(String user, String password) throws DALException {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
         PreparedStatement stm;
