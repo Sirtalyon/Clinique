@@ -5,6 +5,7 @@
  */
 package fr.eni.clinique.ihm;
 
+import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
 
 /**
@@ -135,6 +136,11 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
 
         if (getIdUser) {
             nameTextField.setText("testOk");
+            switch(getRoleUser)
+            {
+                case EnumRole.adm:
+                    break;
+            }
         }else
         {
             nameTextField.setText("testNOk");
