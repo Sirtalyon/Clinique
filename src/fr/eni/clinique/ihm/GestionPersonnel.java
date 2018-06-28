@@ -18,30 +18,12 @@ import javax.swing.table.DefaultTableModel;
 public class GestionPersonnel extends javax.swing.JPanel {
 
     PersonnelAdd personnel;
+
     /**
      * Creates new form GestionPersonnel
      */
     public GestionPersonnel() {
-        personnel = new PersonnelAdd();
-        initComponents();
-        GetValuesDataBase getall = new GetValuesDataBase();
-        List<Personnel> persos = new ArrayList<>();
-        persos = getall.getAll();
-        DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
-        TablePersonnel.setModel(tm);
-        TablePersonnel.getColumnModel().getColumn(0).setHeaderValue("Nom");
-        TablePersonnel.getColumnModel().getColumn(1).setHeaderValue("Rôle");
-        TablePersonnel.getColumnModel().getColumn(2).setHeaderValue("Mot de Passe");
-        TablePersonnel.getTableHeader().repaint();
-        
-        int i = 0;
-        for (Personnel perso : persos) {
-            TablePersonnel.setValueAt(perso.getNom(), i, 0);
-            TablePersonnel.setValueAt(perso.getRole(), i, 1);
-            TablePersonnel.setValueAt(perso.getMotDePase(), i, 2);
-            i++;
-
-        }
+        initFrame();
     }
 
     /**
@@ -83,6 +65,11 @@ public class GestionPersonnel extends javax.swing.JPanel {
         });
 
         buttonDel.setText("Supprimer");
+        buttonDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDelActionPerformed(evt);
+            }
+        });
 
         buttonReinit.setText("Réinitialiser");
         buttonReinit.addActionListener(new java.awt.event.ActionListener() {
@@ -132,21 +119,56 @@ public class GestionPersonnel extends javax.swing.JPanel {
             .addComponent(PanelGestionPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-                                 
-    
+
+
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         personnel.initFrame();
+        
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonReinitActionPerformed
 
-    public void stopEnabled()
-    {
-        this.setEnabled(true);
+    private void buttonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDelActionPerformed
+        GetValuesDataBase get = new GetValuesDataBase();
+        int row = TablePersonnel.getSelectedRow();
+        String nom = TablePersonnel.getModel().getValueAt(row, 0).toString();
+        String role = TablePersonnel.getModel().getValueAt(row, 1).toString();
+        String password = TablePersonnel.getModel().getValueAt(row, 2).toString();
+        String codeEmp = get.getCodeEmp(nom, role);
+        boolean isSupp = get.archivePersonnel(codeEmp);
+        if (isSupp) {
+            this.initFrame();
+        }
+    }//GEN-LAST:event_buttonDelActionPerformed
+
+    public void initFrame() {
+        personnel = new PersonnelAdd();
+        initComponents();
+        GetValuesDataBase getall = new GetValuesDataBase();
+        List<Personnel> persos = new ArrayList<>();
+        persos = getall.getAll();
+        DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
+        TablePersonnel.setModel(tm);
+        TablePersonnel.getColumnModel().getColumn(0).setHeaderValue("Nom");
+        TablePersonnel.getColumnModel().getColumn(1).setHeaderValue("Rôle");
+        TablePersonnel.getColumnModel().getColumn(2).setHeaderValue("Mot de Passe");
+        TablePersonnel.getTableHeader().repaint();
+
+        int i = 0;
+        for (Personnel perso : persos) {
+            if (!perso.isArchive()) {
+                TablePersonnel.setValueAt(perso.getNom(), i, 0);
+                TablePersonnel.setValueAt(perso.getRole(), i, 1);
+                TablePersonnel.setValueAt(perso.getMotDePase(), i, 2);
+                i++;
+            }
+
+        }
+        tm.fireTableDataChanged();
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGestionPersonnel;
     private javax.swing.JTable TablePersonnel;

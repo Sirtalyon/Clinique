@@ -135,6 +135,7 @@ public class PersonnelAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAnnulerActionPerformed
 
     private void ButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAddActionPerformed
+        GestionPersonnel perso = new GestionPersonnel();
         String role = "";
         switch (String.valueOf(RoleCombo.getSelectedItem())){
                 case "Administrateur": 
@@ -154,7 +155,8 @@ public class PersonnelAdd extends javax.swing.JFrame {
         boolean isAdd = addPerso.addPersonnel(TextName.getText(), role, TextPassword.getText());
         if(isAdd)
         {
-            
+            perso.initFrame();
+            this.dispose();
         }else
         {
             
