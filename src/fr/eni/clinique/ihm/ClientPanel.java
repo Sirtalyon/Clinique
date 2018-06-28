@@ -5,6 +5,9 @@
  */
 package fr.eni.clinique.ihm;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
@@ -14,12 +17,15 @@ import jiconfont.swing.IconFontSwing;
  */
 public class ClientPanel extends javax.swing.JPanel {
 
+    Session session;
+
     /**
      * Creates new form Client
      */
     public ClientPanel() {
         IconFontSwing.register(FontAwesome.getIconFont());
         initComponents();
+        session = Session.getSession();
     }
 
     /**
@@ -333,7 +339,15 @@ public class ClientPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_AjouterBoutonTableActionPerformed
 
     private void RechercherBoutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercherBoutonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            RechercheClientPopUp recherche = new RechercheClientPopUp(session.getFrameSession(), false);
+            
+            recherche.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_RechercherBoutonActionPerformed
 
 

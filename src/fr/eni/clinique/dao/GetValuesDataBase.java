@@ -5,6 +5,7 @@
  */
 package fr.eni.clinique.dao;
 
+import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.bo.Personnel;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -46,7 +47,7 @@ public class GetValuesDataBase {
             return false;
         }
     }
-    
+
     public String getCodeEmp(String user, String role) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
@@ -136,8 +137,7 @@ public class GetValuesDataBase {
                 perso.setNom(rs.getString("Nom"));
                 perso.setRole(rs.getString("Role"));
                 String motDePasse = "";
-                for(int i = 0; i<rs.getString("MotPasse").length(); i++)
-                {
+                for (int i = 0; i < rs.getString("MotPasse").length(); i++) {
                     motDePasse += "*";
                 }
                 perso.setMotDePase(motDePasse);
@@ -164,7 +164,7 @@ public class GetValuesDataBase {
                 rs = stm.executeUpdate("INSERT INTO Personnels (Nom, Role, MotPasse, Archive) VALUES ('" + user + "', '" + role + "', '" + password + "', 'false')");
                 if (rs == 1) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
             } else {
@@ -175,7 +175,7 @@ public class GetValuesDataBase {
             return false;
         }
     }
-    
+
     public boolean archivePersonnel(String codePers) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
@@ -187,7 +187,7 @@ public class GetValuesDataBase {
                 rs = stm.executeUpdate("UPDATE Personnels SET Archive='true' WHERE CodePers='" + codePers + "'");
                 if (rs == 1) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
             } else {
@@ -198,5 +198,55 @@ public class GetValuesDataBase {
             return false;
         }
     }
-    
+
+    public List<Client> getClient() {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        List<Client> clients = new ArrayList<>();
+        Client cli = new Client();
+        try {
+
+            stm = connect.prepareStatement("select * from Client");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                cli = new Client();
+                cli.setNomClient(rs.getString("Nom"));
+                cli.setPrenomClient(rs.getString("Prenom"));
+                cli.setCodePostal(rs.getString("CodePostal"));
+                cli.setVille(rs.getString("Ville"));
+                clients.add(cli);
+
+            }
+            return clients;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<Client> rechercheClient(String param) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        List<Client> clients = new ArrayList<>();
+        Client cli = new Client();
+        try {
+
+            stm = connect.prepareStatement("select * from Clients where NomClient like '" + param +"%'");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+            }
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
 }
