@@ -87,6 +87,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         GestionRDV.add(PriseRDV);
 
         GestionClient.setText("Gestion des clients");
+        GestionClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestionClientActionPerformed(evt);
+            }
+        });
         GestionRDV.add(GestionClient);
 
         ClinqueVeterinaire.add(GestionRDV);
@@ -158,6 +163,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         PanelGeneral.repaint();
         PanelGeneral.revalidate();
     }//GEN-LAST:event_GestionPersonnelMenuSelected
+
+    private void GestionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GestionClientActionPerformed
 
     /**
      * @param args the command line arguments
