@@ -7,6 +7,7 @@ package fr.eni.clinique.ihm;
 
 import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import javax.swing.JFrame;
 
 /**
  *
@@ -131,6 +132,10 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     public void initFrame() {
+        this.setVisible(true);
+    }
+    
     private void validateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButonActionPerformed
         GetValuesDataBase getDatabase = new GetValuesDataBase();
         setNameValue(nameTextField.getText());

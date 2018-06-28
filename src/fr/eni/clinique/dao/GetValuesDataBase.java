@@ -86,7 +86,12 @@ public class GetValuesDataBase {
                 perso = new Personnel();
                 perso.setNom(rs.getString("Nom"));
                 perso.setRole(rs.getString("Role"));
-                perso.setMotDePase(rs.getString("MotPasse"));
+                String motDePasse = "";
+                for(int i = 0; i<rs.getString("MotPasse").length(); i++)
+                {
+                    motDePasse += "*";
+                }
+                perso.setMotDePase(motDePasse);
                 persos.add(perso);
 
             }

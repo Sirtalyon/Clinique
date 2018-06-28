@@ -10,7 +10,11 @@ import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -54,6 +58,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         setTitle("Clinique Veterinaire");
         setName("CliniqueVeterinaire"); // NOI18N
 
+        TablePersonnel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         TablePersonnel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", null, null},
@@ -69,6 +74,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablePersonnel);
 
         buttonAdd.setText("Ajouter");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddActionPerformed(evt);
+            }
+        });
 
         buttonDel.setText("Supprimer");
 
@@ -169,7 +179,9 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();
+        ConnexionPageBuild connect = new ConnexionPageBuild();
+        connect.initFrame();
     }//GEN-LAST:event_DeconnexionActionPerformed
 
 
@@ -184,13 +196,18 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
     private void GestionPersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionPersonnelMouseClicked
         // TODO add your handling code here:
+        
+        
         PanelGestionPersonnel.setVisible(true);
         GetValuesDataBase getall = new GetValuesDataBase();
         List<Personnel> persos = new ArrayList<>();
         persos = getall.getAll();
         DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
-        
         TablePersonnel.setModel(tm);
+        TablePersonnel.getColumnModel().getColumn(0).setHeaderValue("Nom");
+        TablePersonnel.getColumnModel().getColumn(1).setHeaderValue("Rôle");
+        TablePersonnel.getColumnModel().getColumn(2).setHeaderValue("Mot de Passe");
+        TablePersonnel.getTableHeader().repaint();
         
         int i = 0;
         for (Personnel perso : persos) {
@@ -201,6 +218,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_GestionPersonnelMouseClicked
+
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        
+    }//GEN-LAST:event_buttonAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +253,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     public void initFrame(String role) {
         AfficherEcranRole(role);
         this.setVisible(true);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         PanelGestionPersonnel.setVisible(false);
     }
 
