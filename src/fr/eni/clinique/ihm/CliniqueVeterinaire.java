@@ -21,7 +21,7 @@ import javax.swing.table.TableColumnModel;
  * @author plaurent2017
  */
 public class CliniqueVeterinaire extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form CliniqueVeterinaire
      */
@@ -151,14 +151,13 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
     private void GestionPersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionPersonnelMouseClicked
         // TODO add your handling code here:
-        
-        
-          
+
+
     }//GEN-LAST:event_GestionPersonnelMouseClicked
 
     private void GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_GestionPersonnelMenuSelected
-        
-        PanelGeneral.setVisible(true);    
+
+        PanelGeneral.setVisible(true);
         this.setContentPane(new GestionPersonnel());
         PanelGeneral.repaint();
         PanelGeneral.revalidate();
@@ -166,6 +165,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
     private void GestionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionClientActionPerformed
         // TODO add your handling code here:
+        PanelGeneral.setVisible(true);
+        this.setContentPane(new ClientPanel());
+        PanelGeneral.repaint();
+        PanelGeneral.revalidate();
     }//GEN-LAST:event_GestionClientActionPerformed
 
     /**
@@ -198,7 +201,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     public void initFrame(String role) {
         AfficherEcranRole(role);
         this.setVisible(true);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         PanelGeneral.setVisible(false);
     }
 
