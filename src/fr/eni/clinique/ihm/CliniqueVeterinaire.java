@@ -21,7 +21,7 @@ import javax.swing.table.TableColumnModel;
  * @author plaurent2017
  */
 public class CliniqueVeterinaire extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form CliniqueVeterinaire
      */
@@ -38,12 +38,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelGestionPersonnel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablePersonnel = new javax.swing.JTable();
-        buttonAdd = new javax.swing.JButton();
-        buttonDel = new javax.swing.JButton();
-        buttonReinit = new javax.swing.JButton();
+        PanelGeneral = new javax.swing.JPanel();
         ClinqueVeterinaire = new javax.swing.JMenuBar();
         Fichier = new javax.swing.JMenu();
         Deconnexion = new javax.swing.JMenuItem();
@@ -58,65 +53,15 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         setTitle("Clinique Veterinaire");
         setName("CliniqueVeterinaire"); // NOI18N
 
-        TablePersonnel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        TablePersonnel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"", null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nom", "Rôle", "Mot de Passe"
-            }
-        ));
-        jScrollPane1.setViewportView(TablePersonnel);
-
-        buttonAdd.setText("Ajouter");
-        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddActionPerformed(evt);
-            }
-        });
-
-        buttonDel.setText("Supprimer");
-
-        buttonReinit.setText("Réinitialiser");
-        buttonReinit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonReinitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanelGestionPersonnelLayout = new javax.swing.GroupLayout(PanelGestionPersonnel);
-        PanelGestionPersonnel.setLayout(PanelGestionPersonnelLayout);
-        PanelGestionPersonnelLayout.setHorizontalGroup(
-            PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelGestionPersonnelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
-                    .addGroup(PanelGestionPersonnelLayout.createSequentialGroup()
-                        .addComponent(buttonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonDel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonReinit)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+        javax.swing.GroupLayout PanelGeneralLayout = new javax.swing.GroupLayout(PanelGeneral);
+        PanelGeneral.setLayout(PanelGeneralLayout);
+        PanelGeneralLayout.setHorizontalGroup(
+            PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 821, Short.MAX_VALUE)
         );
-        PanelGestionPersonnelLayout.setVerticalGroup(
-            PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelGestionPersonnelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelGestionPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                    .addComponent(buttonReinit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                .addContainerGap())
+        PanelGeneralLayout.setVerticalGroup(
+            PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 517, Short.MAX_VALUE)
         );
 
         ClinqueVeterinaire.setToolTipText("");
@@ -150,6 +95,15 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         ClinqueVeterinaire.add(Agenda);
 
         GestionPersonnel.setText("Gestion du personnel");
+        GestionPersonnel.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                GestionPersonnelMenuSelected(evt);
+            }
+        });
         GestionPersonnel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 GestionPersonnelMouseClicked(evt);
@@ -168,11 +122,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelGestionPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelGestionPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,10 +139,6 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }//GEN-LAST:event_DeconnexionActionPerformed
 
 
-    private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonReinitActionPerformed
-
     private void GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionPersonnelActionPerformed
 
 
@@ -198,34 +148,16 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        PanelGestionPersonnel.setVisible(true);
-        GetValuesDataBase getall = new GetValuesDataBase();
-        List<Personnel> persos = new ArrayList<>();
-        persos = getall.getAll();
-        DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
-        TablePersonnel.setModel(tm);
-        TablePersonnel.getColumnModel().getColumn(0).setHeaderValue("Nom");
-        TablePersonnel.getColumnModel().getColumn(1).setHeaderValue("Rôle");
-        TablePersonnel.getColumnModel().getColumn(2).setHeaderValue("Mot de Passe");
-        TablePersonnel.getTableHeader().repaint();
-        
-        int i = 0;
-        for (Personnel perso : persos) {
-            TablePersonnel.setValueAt(perso.getNom(), i, 0);
-            TablePersonnel.setValueAt(perso.getRole(), i, 1);
-            TablePersonnel.setValueAt(perso.getMotDePase(), i, 2);
-            i++;
-
-        }
+          
     }//GEN-LAST:event_GestionPersonnelMouseClicked
 
-    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+    private void GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_GestionPersonnelMenuSelected
         
-        
-        
-        
-        
-    }//GEN-LAST:event_buttonAddActionPerformed
+        PanelGeneral.setVisible(true);    
+        this.setContentPane(new GestionPersonnel());
+        PanelGeneral.repaint();
+        PanelGeneral.revalidate();
+    }//GEN-LAST:event_GestionPersonnelMenuSelected
 
     /**
      * @param args the command line arguments
@@ -258,7 +190,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         AfficherEcranRole(role);
         this.setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        PanelGestionPersonnel.setVisible(false);
+        PanelGeneral.setVisible(false);
     }
 
     public void AfficherEcranRole(String role) {
@@ -289,12 +221,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     private javax.swing.JMenuItem GestionClient;
     private javax.swing.JMenu GestionPersonnel;
     private javax.swing.JMenu GestionRDV;
-    private javax.swing.JPanel PanelGestionPersonnel;
+    private javax.swing.JPanel PanelGeneral;
     private javax.swing.JMenuItem PriseRDV;
-    private javax.swing.JTable TablePersonnel;
-    private javax.swing.JButton buttonAdd;
-    private javax.swing.JButton buttonDel;
-    private javax.swing.JButton buttonReinit;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -103,4 +104,27 @@ public class GetValuesDataBase {
         }
     }
 
+    public boolean addPersonnel(String user, String role, String password) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        Statement stm;
+        int rs = 0;
+        try {
+            if (user != null && password != null && role != null) {
+                stm = connect.createStatement();
+                rs = stm.executeUpdate("INSERT INTO Personnels (Nom, Role, MotPasse, Archive) VALUES ('" + user + "', '" + role + "', '" + password + "', 'false')");
+                if (rs == 1) {
+                    return true;
+                } else {                    
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
 }
