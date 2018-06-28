@@ -128,6 +128,15 @@ public class GestionPersonnel extends javax.swing.JPanel {
 
     private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
         // TODO add your handling code here:
+        
+        GetValuesDataBase get = new GetValuesDataBase();
+        int row = TablePersonnel.getSelectedRow();
+        String nom = TablePersonnel.getModel().getValueAt(row, 0).toString();
+        String role = TablePersonnel.getModel().getValueAt(row, 1).toString();
+        String password = TablePersonnel.getModel().getValueAt(row, 2).toString();
+        String codeEmp = get.getCodeEmp(nom, role);
+        PersonnelReinitPassword init = new PersonnelReinitPassword();
+        init.initFrame(codeEmp);
     }//GEN-LAST:event_buttonReinitActionPerformed
 
     private void buttonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDelActionPerformed

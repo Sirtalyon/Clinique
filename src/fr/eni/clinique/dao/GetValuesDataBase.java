@@ -93,6 +93,31 @@ public class GetValuesDataBase {
             return null;
         }
     }
+    
+    public String getPassword(String CodeEmp) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        try {
+            if (CodeEmp != null) {
+                stm = connect.prepareStatement("select MotPasse from Personnels where CodePers='" + CodeEmp + "'");
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    return rs.getString("MotPasse");
+
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
 
     public List<Personnel> getAll() {
         ConnexionDataBase co = new ConnexionDataBase();

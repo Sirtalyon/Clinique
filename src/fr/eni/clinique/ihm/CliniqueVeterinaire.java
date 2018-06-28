@@ -8,9 +8,12 @@ package fr.eni.clinique.ihm;
 import fr.eni.clinique.bo.Personnel;
 import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import java.awt.Panel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -53,15 +56,17 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         setTitle("Clinique Veterinaire");
         setName("CliniqueVeterinaire"); // NOI18N
 
+        PanelGeneral.setMinimumSize(new java.awt.Dimension(32767, 32767));
+
         javax.swing.GroupLayout PanelGeneralLayout = new javax.swing.GroupLayout(PanelGeneral);
         PanelGeneral.setLayout(PanelGeneralLayout);
         PanelGeneralLayout.setHorizontalGroup(
             PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
         );
         PanelGeneralLayout.setVerticalGroup(
             PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
         );
 
         ClinqueVeterinaire.setToolTipText("");
@@ -145,7 +150,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
 
     private void GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionPersonnelActionPerformed
-
+        
 
     }//GEN-LAST:event_GestionPersonnelActionPerformed
 
@@ -156,19 +161,15 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }//GEN-LAST:event_GestionPersonnelMouseClicked
 
     private void GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_GestionPersonnelMenuSelected
-
         PanelGeneral.setVisible(true);
         this.setContentPane(new GestionPersonnel());
-        PanelGeneral.repaint();
-        PanelGeneral.revalidate();
+        SwingUtilities.updateComponentTreeUI(this);
     }//GEN-LAST:event_GestionPersonnelMenuSelected
 
     private void GestionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionClientActionPerformed
-        // TODO add your handling code here:
         PanelGeneral.setVisible(true);
         this.setContentPane(new ClientPanel());
-        PanelGeneral.repaint();
-        PanelGeneral.revalidate();
+        SwingUtilities.updateComponentTreeUI(this);
     }//GEN-LAST:event_GestionClientActionPerformed
 
     /**
@@ -199,10 +200,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     }
 
     public void initFrame(String role) {
+        PanelGeneral.setVisible(false);
         AfficherEcranRole(role);
         this.setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        PanelGeneral.setVisible(false);
     }
 
     public void AfficherEcranRole(String role) {
