@@ -71,6 +71,7 @@ public class ClientPanel extends javax.swing.JPanel {
         RechercherBouton.setText("Rechercher");
         RechercherBouton.setToolTipText("");
         RechercherBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        RechercherBouton.setOpaque(false);
         RechercherBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         RechercherBouton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +85,9 @@ public class ClientPanel extends javax.swing.JPanel {
         AjouterBouton.setForeground(new java.awt.Color(0, 0, 0));
         AjouterBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.PLUS_SQUARE_O, 15));
         AjouterBouton.setText("Ajouter");
+        AjouterBouton.setBorderPainted(false);
         AjouterBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AjouterBouton.setOpaque(true);
         AjouterBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Ajout_SuppPanel.add(AjouterBouton);
 
@@ -93,6 +96,7 @@ public class ClientPanel extends javax.swing.JPanel {
         SupprimerBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.MINUS_SQUARE_O, 20));
         SupprimerBouton.setText("Supprimer");
         SupprimerBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        SupprimerBouton.setOpaque(false);
         SupprimerBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Ajout_SuppPanel.add(SupprimerBouton);
 
@@ -103,6 +107,7 @@ public class ClientPanel extends javax.swing.JPanel {
         AnnulerBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.UNDO, 15));
         AnnulerBouton.setText("Annuler");
         AnnulerBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AnnulerBouton.setOpaque(false);
         AnnulerBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Annuler_ValiderPanel.add(AnnulerBouton);
 
@@ -111,6 +116,7 @@ public class ClientPanel extends javax.swing.JPanel {
         ValiderBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.CHECK, 15));
         ValiderBouton.setText("Valider");
         ValiderBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ValiderBouton.setOpaque(false);
         ValiderBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Annuler_ValiderPanel.add(ValiderBouton);
 
@@ -124,17 +130,13 @@ public class ClientPanel extends javax.swing.JPanel {
                 .addGap(187, 187, 187)
                 .addComponent(Ajout_SuppPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Annuler_ValiderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Annuler_ValiderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Annuler_ValiderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ajout_SuppPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RechercherBouton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(RechercherBouton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+            .addComponent(Ajout_SuppPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Annuler_ValiderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         RechercherBouton.getAccessibleContext().setAccessibleName("RechercherBouton");
@@ -197,7 +199,7 @@ public class ClientPanel extends javax.swing.JPanel {
                         .addComponent(CodePostalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ChampsPanelLayout.createSequentialGroup()
                         .addComponent(CodePostalLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(VilleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ChampsPanelLayout.createSequentialGroup()
                         .addComponent(AdresseLabel)
@@ -249,10 +251,11 @@ public class ClientPanel extends javax.swing.JPanel {
 
         AjouterBoutonTable.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         AjouterBoutonTable.setForeground(new java.awt.Color(0, 0, 0));
-        AjouterBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.PLUS_SQUARE_O, 15));
+        AjouterBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.PLUS_SQUARE_O, 20));
         AjouterBoutonTable.setText("Ajouter");
         AjouterBoutonTable.setToolTipText("");
         AjouterBoutonTable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AjouterBoutonTable.setOpaque(false);
         AjouterBoutonTable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         AjouterBoutonTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,17 +266,19 @@ public class ClientPanel extends javax.swing.JPanel {
 
         SupprimerBoutonTable.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         SupprimerBoutonTable.setForeground(new java.awt.Color(0, 0, 0));
-        SupprimerBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.MINUS_SQUARE_O, 15));
+        SupprimerBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.MINUS_SQUARE_O, 20));
         SupprimerBoutonTable.setText("Supprimer");
         SupprimerBoutonTable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        SupprimerBoutonTable.setOpaque(false);
         SupprimerBoutonTable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Edit_Add_SupPanel.add(SupprimerBoutonTable);
 
         EditerBoutonTable.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         EditerBoutonTable.setForeground(new java.awt.Color(0, 0, 0));
-        EditerBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.FILE_TEXT_O, 15));
+        EditerBoutonTable.setIcon(IconFontSwing.buildIcon(FontAwesome.FILE_TEXT_O, 20));
         EditerBoutonTable.setText("Editer");
         EditerBoutonTable.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        EditerBoutonTable.setOpaque(false);
         EditerBoutonTable.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Edit_Add_SupPanel.add(EditerBoutonTable);
 
@@ -294,18 +299,17 @@ public class ClientPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(ChampsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ChampsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 243, Short.MAX_VALUE)
-                                .addComponent(Edit_Add_SupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Edit_Add_SupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(SearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -319,8 +323,8 @@ public class ClientPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Edit_Add_SupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(Edit_Add_SupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
