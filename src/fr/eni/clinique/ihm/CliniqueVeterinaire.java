@@ -221,6 +221,10 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         
+        
+        
+        
+        
     }//GEN-LAST:event_buttonAddActionPerformed
 
     /**
