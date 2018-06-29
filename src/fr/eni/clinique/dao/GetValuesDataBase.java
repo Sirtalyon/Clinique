@@ -94,7 +94,7 @@ public class GetValuesDataBase {
             return null;
         }
     }
-    
+
     public String getPassword(String CodeEmp) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
@@ -118,7 +118,6 @@ public class GetValuesDataBase {
             return null;
         }
     }
-    
 
     public List<Personnel> getAll() {
         ConnexionDataBase co = new ConnexionDataBase();
@@ -213,8 +212,8 @@ public class GetValuesDataBase {
             while (rs.next()) {
 
                 cli = new Client();
-                cli.setNomClient(rs.getString("Nom"));
-                cli.setPrenomClient(rs.getString("Prenom"));
+                cli.setNomClient(rs.getString("NomClient"));
+                cli.setPrenomClient(rs.getString("PrenomClient"));
                 cli.setCodePostal(rs.getString("CodePostal"));
                 cli.setVille(rs.getString("Ville"));
                 clients.add(cli);
@@ -234,14 +233,20 @@ public class GetValuesDataBase {
         PreparedStatement stm;
         ResultSet rs;
         List<Client> clients = new ArrayList<>();
-        Client cli = new Client();
+
         try {
 
-            stm = connect.prepareStatement("select * from Clients where NomClient like '" + param +"%'");
+            stm = connect.prepareStatement("select * from Clients where NomClient like '" + param + "%'");
             rs = stm.executeQuery();
             while (rs.next()) {
+                Client cli = new Client();
+                cli.setNomClient(rs.getString("NomClient"));
+                cli.setPrenomClient(rs.getString("PrenomClient"));
+                cli.setCodePostal(rs.getString("CodePostal"));
+                cli.setVille(rs.getString("Ville"));
+                clients.add(cli);
             }
-            return null;
+            return clients;
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return null;

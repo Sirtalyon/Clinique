@@ -43,8 +43,8 @@ public class ClientPanel extends javax.swing.JPanel {
         AjouterBouton = new javax.swing.JButton();
         SupprimerBouton = new javax.swing.JButton();
         Annuler_ValiderPanel = new javax.swing.JPanel();
-        AnnulerBouton = new javax.swing.JButton();
         ValiderBouton = new javax.swing.JButton();
+        AnnulerBouton = new javax.swing.JButton();
         ChampsPanel = new javax.swing.JPanel();
         VilleLabel = new javax.swing.JLabel();
         CodeTextField = new javax.swing.JTextField();
@@ -93,7 +93,6 @@ public class ClientPanel extends javax.swing.JPanel {
         AjouterBouton.setText("Ajouter");
         AjouterBouton.setBorderPainted(false);
         AjouterBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        AjouterBouton.setOpaque(true);
         AjouterBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Ajout_SuppPanel.add(AjouterBouton);
 
@@ -108,15 +107,6 @@ public class ClientPanel extends javax.swing.JPanel {
 
         Annuler_ValiderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-        AnnulerBouton.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        AnnulerBouton.setForeground(new java.awt.Color(0, 0, 0));
-        AnnulerBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.UNDO, 15));
-        AnnulerBouton.setText("Annuler");
-        AnnulerBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        AnnulerBouton.setOpaque(false);
-        AnnulerBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Annuler_ValiderPanel.add(AnnulerBouton);
-
         ValiderBouton.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         ValiderBouton.setForeground(new java.awt.Color(0, 0, 0));
         ValiderBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.CHECK, 15));
@@ -125,6 +115,15 @@ public class ClientPanel extends javax.swing.JPanel {
         ValiderBouton.setOpaque(false);
         ValiderBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         Annuler_ValiderPanel.add(ValiderBouton);
+
+        AnnulerBouton.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        AnnulerBouton.setForeground(new java.awt.Color(0, 0, 0));
+        AnnulerBouton.setIcon(IconFontSwing.buildIcon(FontAwesome.UNDO, 15));
+        AnnulerBouton.setText("Annuler");
+        AnnulerBouton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AnnulerBouton.setOpaque(false);
+        AnnulerBouton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Annuler_ValiderPanel.add(AnnulerBouton);
 
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
@@ -296,9 +295,17 @@ public class ClientPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(AnimalTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -349,7 +356,6 @@ public class ClientPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_RechercherBoutonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdresseLabel;
