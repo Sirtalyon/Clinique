@@ -249,4 +249,27 @@ public class GetValuesDataBase {
 
     }
 
+    public boolean updatePassword(String codePers, String newPassword) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        Statement stm;
+        int rs = 0;
+        try {
+            if (codePers != null) {
+                stm = connect.createStatement();
+                rs = stm.executeUpdate("UPDATE Personnels SET MotPasse='" + newPassword + "' WHERE CodePers='" + codePers + "'");
+                if (rs == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
 }

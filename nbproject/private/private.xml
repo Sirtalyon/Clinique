@@ -6,17 +6,22 @@
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bll/GestionPersonnelManager.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/ConnexionPageBuild.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Veterinaire.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Client.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Admin.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionPersonnel.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Personnel.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/properties/settings.properties</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/test/fr/eni/clinique/dao/ConnexionDataBaseTest.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/ClientPanel.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/CliniqueVeterinaire.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/DALException.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/PersonnelReinitPassword.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/GetValuesDataBase.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/ConnexionDataBase.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/properties/Configuration.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bll/BLLException.java</file>
             <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/EnumRole.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/PersonnelAdd.java</file>
         </group>
     </open-files>
 </project-private>
