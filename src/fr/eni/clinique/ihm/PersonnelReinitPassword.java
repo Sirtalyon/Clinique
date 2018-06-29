@@ -13,22 +13,24 @@ import fr.eni.clinique.dao.GetValuesDataBase;
  */
 public class PersonnelReinitPassword extends javax.swing.JFrame {
 
+    String codeEmploye = "";
+
     /**
      * Creates new form PersonnelReinitPassword
      */
     public PersonnelReinitPassword() {
         initComponents();
-        setLocationRelativeTo(null);    
+           
     }
 
-    public void initFrame(String codeEmp){
-        initComponents();
+    public void initFrame(String codeEmp) {
+        codeEmploye = codeEmp;
         GetValuesDataBase get = new GetValuesDataBase();
         String password = get.getPassword(codeEmp);
         this.setVisible(true);
-        TextName.setText(password);
+        TextPassword.setText(password);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +43,7 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
         TextPassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        TextName = new javax.swing.JTextField();
+        TextNewPassword = new javax.swing.JTextField();
         ButtonAnnuler = new javax.swing.JButton();
         ButtonChange = new javax.swing.JButton();
 
@@ -54,7 +56,7 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
 
         jLabel1.setText("Nouveau Mot de Passe");
 
-        TextName.setToolTipText("");
+        TextNewPassword.setToolTipText("");
 
         ButtonAnnuler.setText("Annuler");
         ButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -74,12 +76,6 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
-                .addComponent(ButtonChange, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(ButtonAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,8 +86,14 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TextPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                    .addComponent(TextName))
+                    .addComponent(TextNewPassword))
                 .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addComponent(ButtonChange, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(ButtonAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +105,7 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TextName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonChange, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,11 +117,19 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAnnulerActionPerformed
-
+        this.dispose();
     }//GEN-LAST:event_ButtonAnnulerActionPerformed
 
     private void ButtonChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonChangeActionPerformed
+        GetValuesDataBase update = new GetValuesDataBase();
+        String newPassword = TextNewPassword.getText();
+        System.out.println(newPassword);
+        boolean isChange = update.updatePassword(codeEmploye, newPassword);
+        if (isChange) {
+            this.dispose();
+        } else {
 
+        }
     }//GEN-LAST:event_ButtonChangeActionPerformed
 
     /**
@@ -160,7 +170,7 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAnnuler;
     private javax.swing.JButton ButtonChange;
-    private javax.swing.JTextField TextName;
+    private javax.swing.JTextField TextNewPassword;
     private javax.swing.JTextField TextPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
