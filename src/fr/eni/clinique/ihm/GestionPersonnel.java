@@ -45,7 +45,7 @@ public class GestionPersonnel extends javax.swing.JPanel {
         TablePersonnel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         TablePersonnel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -54,7 +54,22 @@ public class GestionPersonnel extends javax.swing.JPanel {
             new String [] {
                 "Nom", "Rôle", "Mot de Passe"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TablePersonnel);
 
         buttonAdd.setText("Ajouter");
@@ -104,7 +119,7 @@ public class GestionPersonnel extends javax.swing.JPanel {
                     .addComponent(buttonReinit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 

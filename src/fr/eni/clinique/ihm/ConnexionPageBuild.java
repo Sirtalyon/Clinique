@@ -81,6 +81,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             }
         });
 
+        nameTextField.setText("BOSAPIN");
         nameTextField.setName("NameField"); // NOI18N
         nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
             }
         });
 
+        PassWordTextField.setText("admin");
         PassWordTextField.setName("PassWordTextField"); // NOI18N
         PassWordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
