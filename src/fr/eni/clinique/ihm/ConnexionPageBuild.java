@@ -7,6 +7,9 @@ package fr.eni.clinique.ihm;
 
 import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JFrame;
 
 /**
@@ -46,6 +49,14 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
      */
     public ConnexionPageBuild() {
         initComponents();
+        Action sendAction = new AbstractAction("Send") {
+        public void actionPerformed(ActionEvent e) {
+                showEcranAccueil();
+            }
+            
+        };
+        PassWordTextField.addActionListener(sendAction);
+        nameTextField.addActionListener(sendAction);
         setLocationRelativeTo(null);
     }
 
@@ -169,6 +180,36 @@ public class ConnexionPageBuild extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_validateButonActionPerformed
 
+    public void showEcranAccueil(){
+        GetValuesDataBase getDatabase = new GetValuesDataBase();
+        setNameValue(nameTextField.getText());
+        setPassWordValue(PassWordTextField.getText());
+        getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
+        getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
+
+        if (getIdUser) {
+            switch(getRoleUser)
+            {
+                case EnumRole.ADM:
+                    isAdmin = true;
+                    break;
+                case EnumRole.AST:
+                    isAssistant = true;
+                    break;
+                case EnumRole.SEC:
+                    isSecretaire = true;
+                    break;
+                case EnumRole.VET:
+                    isVeterinaire = true;
+                    break;
+            }
+            this.dispose();    
+            clinique.initFrame(getRoleUser);
+        }else
+        {
+            nameTextField.setText("testNOk");
+        }
+    }
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
         // TODO add your handling code here:
         setNameValue(nameTextField.getText());
