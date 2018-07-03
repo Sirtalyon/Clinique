@@ -7,6 +7,8 @@ package fr.eni.clinique.ihm.Controller;
 
 import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import fr.eni.clinique.ihm.Controller.Mediator.IControler;
+import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
 import fr.eni.clinique.ihm.GestionClient.IRechercheClientObserver;
 import fr.eni.clinique.ihm.GestionClient.RechercheClient;
 import fr.eni.clinique.ihm.GestionClient.Session;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,16 +25,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author plaurent2017
  */
-public class RechercheClientControler implements IRechercheClientObserver {
+public class RechercheClientControler implements IControler, IRechercheClientObserver {
 
-    private RechercheClient viewRechercheClient;
     private GetValuesDataBase rechercheClient = new GetValuesDataBase();
+    private RechercheClient viewRechercheClient;
     private static RechercheClientControler rechercheClientControler;
+    private IMediator rechercheClientMediator;
     private List<Client> listClient = new ArrayList<>();
     private JTable tableClient;
 
-        Session session;
-    
+    Session session;
+
     public RechercheClientControler() {
         session = Session.getSession();
     }
@@ -54,9 +59,9 @@ public class RechercheClientControler implements IRechercheClientObserver {
         try {
             tableClient = session.getRechercheClientFrameSession().getTableClient();
             DefaultTableModel model = (DefaultTableModel) tableClient.getModel();
-            
+
             model.setRowCount(0);
-            
+
             for (Client client : listClient) {
                 model.addRow(new Object[]{
                     client.getCodeClient(),
@@ -83,5 +88,22 @@ public class RechercheClientControler implements IRechercheClientObserver {
             rechercheClientControler = new RechercheClientControler();
         }
         return rechercheClientControler;
+    }
+
+    @Override
+    public void setMediator(IMediator mediator) {
+        if (mediator != null) {
+            this.rechercheClientMediator = mediator;
+        }
+    }
+
+    @Override
+    public JPanel getPanel() {
+         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public JDialog getDialogue() {
+       return viewRechercheClient.getDialog();
     }
 }

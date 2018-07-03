@@ -9,7 +9,10 @@ import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import fr.eni.clinique.ihm.IObservable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import jiconfont.icons.FontAwesome;
@@ -188,7 +191,11 @@ public class RechercheClient extends javax.swing.JDialog implements IObservable<
     public void setTableClientPanel(JPanel tableClientPanel) {
         this.tableClientPanel = tableClientPanel;
     }
-
+  
+    public JDialog getDialog(){
+        return this;
+    }
+        
     @Override
     public void registreObserver(IRechercheClientObserver observer) {
         this.observers.add(observer);

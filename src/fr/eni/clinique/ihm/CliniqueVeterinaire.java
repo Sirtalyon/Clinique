@@ -275,5 +275,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
     public void setPriseRDV(JMenuItem PriseRDV) {
         this.PriseRDV = PriseRDV;
     }
-    
+    public JFrame getFrame() {
+        return this;
+    }    
 }

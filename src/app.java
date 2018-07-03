@@ -1,6 +1,12 @@
 
 import fr.eni.clinique.ihm.CliniqueVeterinaire;
-import fr.eni.clinique.ihm.ConnexionPageBuild;
+import fr.eni.clinique.ihm.Connexion;
+import fr.eni.clinique.ihm.Controller.ClientControler;
+import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
+import fr.eni.clinique.ihm.Controller.ConnexionControler;
+import fr.eni.clinique.ihm.Controller.Mediator.ApplicationMediator;
+import fr.eni.clinique.ihm.Controller.RechercheClientControler;
+import fr.eni.clinique.ihm.GestionClient.RechercheClient;
 import fr.eni.clinique.ihm.GestionClient.Session;
 
 /*
@@ -16,13 +22,19 @@ import fr.eni.clinique.ihm.GestionClient.Session;
 public class app {
     
     public static void main(String[] args) {
-        CliniqueVeterinaire cliniqueVeterinaire = new CliniqueVeterinaire();
-        ConnexionPageBuild connexionPageBuild = new ConnexionPageBuild();  
+        ApplicationMediator app = new ApplicationMediator();
         
-        Session session = Session.getSession();
-        session.setCliniqueVeterinaireFrameSession(cliniqueVeterinaire);
+        ConnexionControler connexionControler = ConnexionControler.getInstance();
+        CliniqueVeterinaireController cliniqueVeterinaireController = CliniqueVeterinaireController.getInstance();
+        RechercheClientControler rechercheClientControler = RechercheClientControler.getInstance();
+        ClientControler clientControler = ClientControler.getInstance();
         
-        connexionPageBuild.setVisible(true);
+        connexionControler.setMediator(app);
+        cliniqueVeterinaireController.setMediator(app);
+        clientControler.setMediator(app);
+        rechercheClientControler.setMediator(app);
+        
+        app.AfficherConnexion();        
     }
     
 }

@@ -5,19 +5,20 @@
  */
 package fr.eni.clinique.ihm.Controller;
 
-import fr.eni.clinique.ihm.GestionClient.ClientPanel;
+import fr.eni.clinique.ihm.Controller.Mediator.IControler;
+import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
-import fr.eni.clinique.ihm.GestionClient.RechercheClient;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
 
 /**
  *
  * @author plaurent2017
  */
-public class ClientControler implements IClientObserver {
+public class ClientControler implements IControler, IClientObserver {
 
-    private ClientPanel viewClientPanel;
     private static ClientControler clientControler;
-    private RechercheClient rechercheClient;
+    private IMediator clientMediator;
 
     private void ControlerTemplate() {
     }
@@ -39,7 +40,7 @@ public class ClientControler implements IClientObserver {
     @Override
     public void AfficherRecherche() {
         //Affiche la recherche
-        
+
     }
 
     @Override
@@ -70,6 +71,23 @@ public class ClientControler implements IClientObserver {
     @Override
     public void EditerAnimal() {
         //Editer Animal.
+    }
+
+    @Override
+    public void setMediator(IMediator mediator) {
+        if (mediator != null) {
+            this.clientMediator = mediator;
+        }
+    }
+
+    @Override
+    public JPanel getPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public JDialog getDialogue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -11,5 +11,48 @@ package fr.eni.clinique.ihm.Controller.Mediator;
  */
 public interface IMediator {
 
-    public void send();
+    /* 
+    Gestion Client 
+     */
+    public void AfficherClient();
+
+    public void AfficherRechercheClient();
+
+    public void AfficherAjoutClient();
+
+    public void SupprimerClinet();
+
+    /* 
+    Clinique Veterinaire
+     */
+    public void AfficherCliniqueVeterinaire();
+
+    public void Deconnexion();
+
+    public void AfficherGestionPersonnel();
+
+    public void AfficherGestionClient();
+
+    public void AfficherPrisDeRDV();
+
+    public void AfficherAgenda();
+
+    public void FermerApp();
+
+    /* 
+    Gestion Personnel
+     */
+    
+    public void AjoutPersonnel();
+    
+    public void SupprimerPersonnel();
+    
+    public void ModifierMotDePasse();
+    /* 
+    Connexion
+     */
+    public void AfficherConnexion();
+    
+    public void ValiderConnexion();
+
 }

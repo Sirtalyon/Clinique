@@ -5,9 +5,6 @@
  */
 package fr.eni.clinique.ihm;
 
-import fr.eni.clinique.dao.EnumRole;
-import fr.eni.clinique.dao.GetValuesDataBase;
-import fr.eni.clinique.ihm.Controller.ICliniqueVeterinaireObserver;
 import fr.eni.clinique.ihm.Controller.IConnexionObserver;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -19,11 +16,11 @@ import javax.swing.JTextField;
  *
  * @author plaurent2017
  */
-public class ConnexionPageBuild extends javax.swing.JFrame implements IObservable<IConnexionObserver> {
+public class Connexion extends javax.swing.JFrame implements IObservable<IConnexionObserver> {
 
     private List<IConnexionObserver> observers = new ArrayList();
 
-    public ConnexionPageBuild() throws HeadlessException {
+    public Connexion() throws HeadlessException {
         initComponents();
     }
 
@@ -102,32 +99,6 @@ public class ConnexionPageBuild extends javax.swing.JFrame implements IObservabl
         for (IConnexionObserver obs : observers) {
             obs.ValiderConnexion();
         }
-        /*GetValuesDataBase getDatabase = new GetValuesDataBase();
-        setNameValue(nameTextField.getText());
-        setPassWordValue(PassWordTextField.getText());
-        getIdUser = getDatabase.getIdentifiant(getNameValue(), getPassWordValue());
-        getRoleUser = getDatabase.getRole(getNameValue(), getPassWordValue());
-
-        if (getIdUser) {
-            switch (getRoleUser) {
-                case EnumRole.ADM:
-                    isAdmin = true;
-                    break;
-                case EnumRole.AST:
-                    isAssistant = true;
-                    break;
-                case EnumRole.SEC:
-                    isSecretaire = true;
-                    break;
-                case EnumRole.VET:
-                    isVeterinaire = true;
-                    break;
-            }
-            this.dispose();
-            clinique.initFrame(getRoleUser);
-        } else {
-            nameTextField.setText("testNOk");
-        }*/
     }//GEN-LAST:event_validateButonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,6 +134,4 @@ public class ConnexionPageBuild extends javax.swing.JFrame implements IObservabl
     public void setNameTextField(JTextField nameTextField) {
         this.nameTextField = nameTextField;
     }
-    
-    
 }

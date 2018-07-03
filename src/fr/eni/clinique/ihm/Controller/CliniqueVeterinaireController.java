@@ -7,17 +7,39 @@ package fr.eni.clinique.ihm.Controller;
 
 import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.ihm.CliniqueVeterinaire;
+import fr.eni.clinique.ihm.Controller.Mediator.IControler;
+import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
  * @author plaurent2017
  */
-public class CliniqueVeterinaireController implements ICliniqueVeterinaireObserver {
+public class CliniqueVeterinaireController implements IControler, ICliniqueVeterinaireObserver {
 
     private CliniqueVeterinaire viewCliniqueVeterinaire;
+    private static CliniqueVeterinaireController cliniqueVeterinaireController;
+    private IMediator cliniqueVeterinaireIMediator;
 
     public CliniqueVeterinaireController() {
     }
+    
+        public static synchronized CliniqueVeterinaireController getInstance() {
+        if (cliniqueVeterinaireController == null) {
+            cliniqueVeterinaireController = new CliniqueVeterinaireController();
+        }
+        return cliniqueVeterinaireController;
+    }
+
+    public static synchronized CliniqueVeterinaireController getObserver() {
+        if (cliniqueVeterinaireController == null) {
+            cliniqueVeterinaireController = new CliniqueVeterinaireController();
+        }
+        return cliniqueVeterinaireController;
+    }
+
 
     @Override
     public void AfficherGestionClient() {
@@ -27,6 +49,7 @@ public class CliniqueVeterinaireController implements ICliniqueVeterinaireObserv
     @Override
     public void Deconnexion() {
         //Deconnexion de l'application.
+        
     }
 
     @Override
@@ -65,6 +88,27 @@ public class CliniqueVeterinaireController implements ICliniqueVeterinaireObserv
                 break;
         }
 
+    }
+
+    @Override
+    public void setMediator(IMediator mediator) {
+        if (mediator != null) {
+            this.cliniqueVeterinaireIMediator = mediator;
+        }
+    }
+
+    @Override
+    public JPanel getPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public JDialog getDialogue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public JFrame getFrame() {
+        return viewCliniqueVeterinaire.getFrame();
     }
 
 }
