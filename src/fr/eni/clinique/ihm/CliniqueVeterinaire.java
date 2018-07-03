@@ -5,25 +5,26 @@
  */
 package fr.eni.clinique.ihm;
 
-import fr.eni.clinique.bo.Personnel;
+import fr.eni.clinique.ihm.GestionPersonnel.GestionPersonnel;
+import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.dao.EnumRole;
-import fr.eni.clinique.dao.GetValuesDataBase;
-import java.awt.Panel;
+import fr.eni.clinique.ihm.GestionClient.IClientObserver;
+import fr.eni.clinique.ihm.Controller.ICliniqueVeterinaireObserver;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author plaurent2017
  */
-public class CliniqueVeterinaire extends javax.swing.JFrame {
+public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservable<ICliniqueVeterinaireObserver> {
+
+    private List<ICliniqueVeterinaireObserver> observers = new ArrayList();
 
     /**
      * Creates new form CliniqueVeterinaire
@@ -82,6 +83,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         Fichier.add(Deconnexion);
 
         Fermer.setText("Fermer");
+        Fermer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FermerActionPerformed(evt);
+            }
+        });
         Fichier.add(Fermer);
 
         ClinqueVeterinaire.add(Fichier);
@@ -89,6 +95,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         GestionRDV.setText("Gestion des rendez vous");
 
         PriseRDV.setText("Prise de rendez vous");
+        PriseRDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PriseRDVActionPerformed(evt);
+            }
+        });
         GestionRDV.add(PriseRDV);
 
         GestionClient.setText("Gestion des clients");
@@ -102,23 +113,14 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         ClinqueVeterinaire.add(GestionRDV);
 
         Agenda.setText("Agenda");
+        Agenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgendaActionPerformed(evt);
+            }
+        });
         ClinqueVeterinaire.add(Agenda);
 
         GestionPersonnel.setText("Gestion du personnel");
-        GestionPersonnel.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                GestionPersonnelMenuSelected(evt);
-            }
-        });
-        GestionPersonnel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                GestionPersonnelMouseClicked(evt);
-            }
-        });
         GestionPersonnel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GestionPersonnelActionPerformed(evt);
@@ -142,88 +144,42 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
-        this.dispose();
-        ConnexionPageBuild connect = new ConnexionPageBuild();
-        connect.initFrame();
-    }//GEN-LAST:event_DeconnexionActionPerformed
-
-
-    private void GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionPersonnelActionPerformed
-        
-
-    }//GEN-LAST:event_GestionPersonnelActionPerformed
-
-    private void GestionPersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionPersonnelMouseClicked
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_GestionPersonnelMouseClicked
-
-    private void GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_GestionPersonnelMenuSelected
-        PanelGeneral.setVisible(true);
-        this.setContentPane(new GestionPersonnel());
-        SwingUtilities.updateComponentTreeUI(this);
-    }//GEN-LAST:event_GestionPersonnelMenuSelected
 
     private void GestionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionClientActionPerformed
-        PanelGeneral.setVisible(true);
-        this.setContentPane(new ClientPanel());
-        SwingUtilities.updateComponentTreeUI(this);
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.AfficherGestionClient();
+        }
     }//GEN-LAST:event_GestionClientActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CliniqueVeterinaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CliniqueVeterinaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CliniqueVeterinaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CliniqueVeterinaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeconnexionActionPerformed
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.Deconnexion();
         }
-    }
+    }//GEN-LAST:event_DeconnexionActionPerformed
 
-    public void initFrame(String role) {
-        PanelGeneral.setVisible(false);
-        AfficherEcranRole(role);
-        this.setVisible(true);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    }
-
-    public void AfficherEcranRole(String role) {
-        switch (role) {
-            case EnumRole.ADM:
-                break;
-            case EnumRole.AST:
-                Agenda.setVisible(false);
-                GestionPersonnel.setVisible(false);
-                break;
-            case EnumRole.SEC:
-                GestionPersonnel.setVisible(false);
-                break;
-            case EnumRole.VET:
-                GestionPersonnel.setVisible(false);
-                break;
-
+    private void GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionPersonnelActionPerformed
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.AfficherGestionPersonnel();
         }
+    }//GEN-LAST:event_GestionPersonnelActionPerformed
 
-    }
+    private void AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendaActionPerformed
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.AfficherAgenda();
+        }
+    }//GEN-LAST:event_AgendaActionPerformed
+
+    private void PriseRDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriseRDVActionPerformed
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.AfficherPriseRDV();
+        }
+    }//GEN-LAST:event_PriseRDVActionPerformed
+
+    private void FermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FermerActionPerformed
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.Fermer();
+        }
+    }//GEN-LAST:event_FermerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Agenda;
@@ -237,4 +193,87 @@ public class CliniqueVeterinaire extends javax.swing.JFrame {
     private javax.swing.JPanel PanelGeneral;
     private javax.swing.JMenuItem PriseRDV;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void registreObserver(ICliniqueVeterinaireObserver observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unregistreObserver(ICliniqueVeterinaireObserver observer) {
+        this.observers.remove(observer);
+    }
+
+    public JMenu getAgenda() {
+        return Agenda;
+    }
+
+    public void setAgenda(JMenu Agenda) {
+        this.Agenda = Agenda;
+    }
+
+    public JMenuItem getDeconnexion() {
+        return Deconnexion;
+    }
+
+    public void setDeconnexion(JMenuItem Deconnexion) {
+        this.Deconnexion = Deconnexion;
+    }
+
+    public JMenuItem getFermer() {
+        return Fermer;
+    }
+
+    public void setFermer(JMenuItem Fermer) {
+        this.Fermer = Fermer;
+    }
+
+    public JMenu getFichier() {
+        return Fichier;
+    }
+
+    public void setFichier(JMenu Fichier) {
+        this.Fichier = Fichier;
+    }
+
+    public JMenuItem getGestionClient() {
+        return GestionClient;
+    }
+
+    public void setGestionClient(JMenuItem GestionClient) {
+        this.GestionClient = GestionClient;
+    }
+
+    public JMenu getGestionPersonnel() {
+        return GestionPersonnel;
+    }
+
+    public void setGestionPersonnel(JMenu GestionPersonnel) {
+        this.GestionPersonnel = GestionPersonnel;
+    }
+
+    public JMenu getGestionRDV() {
+        return GestionRDV;
+    }
+
+    public void setGestionRDV(JMenu GestionRDV) {
+        this.GestionRDV = GestionRDV;
+    }
+
+    public JPanel getPanelGeneral() {
+        return PanelGeneral;
+    }
+
+    public void setPanelGeneral(JPanel PanelGeneral) {
+        this.PanelGeneral = PanelGeneral;
+    }
+
+    public JMenuItem getPriseRDV() {
+        return PriseRDV;
+    }
+
+    public void setPriseRDV(JMenuItem PriseRDV) {
+        this.PriseRDV = PriseRDV;
+    }
+    
 }

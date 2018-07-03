@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.eni.clinique.ihm;
+package fr.eni.clinique.ihm.GestionPersonnel;
 
+import fr.eni.clinique.ihm.GestionPersonnel.GestionPersonnel;
 import fr.eni.clinique.dao.GetValuesDataBase;
 import javax.swing.JFrame;
 

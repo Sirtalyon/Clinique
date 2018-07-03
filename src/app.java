@@ -1,7 +1,7 @@
 
 import fr.eni.clinique.ihm.CliniqueVeterinaire;
 import fr.eni.clinique.ihm.ConnexionPageBuild;
-import fr.eni.clinique.ihm.Session;
+import fr.eni.clinique.ihm.GestionClient.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +20,7 @@ public class app {
         ConnexionPageBuild connexionPageBuild = new ConnexionPageBuild();  
         
         Session session = Session.getSession();
-        session.setFrameSession(cliniqueVeterinaire);
+        session.setCliniqueVeterinaireFrameSession(cliniqueVeterinaire);
         
         connexionPageBuild.setVisible(true);
     }
