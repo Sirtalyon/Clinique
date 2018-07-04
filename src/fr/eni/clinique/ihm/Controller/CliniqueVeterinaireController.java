@@ -6,6 +6,7 @@
 package fr.eni.clinique.ihm.Controller;
 
 import fr.eni.clinique.dao.EnumRole;
+import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.CliniqueVeterinaire;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
@@ -23,11 +24,38 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     private static CliniqueVeterinaireController cliniqueVeterinaireController;
     private IMediator cliniqueVeterinaireIMediator;
 
-    public CliniqueVeterinaireController() {
-        viewCliniqueVeterinaire = new CliniqueVeterinaire();
+    private CliniqueVeterinaireController() {
     }
-    
-        public static synchronized CliniqueVeterinaireController getInstance() {
+
+    @Override
+    public void initView() {
+        GetValuesDataBase bdd = new GetValuesDataBase();
+        
+        viewCliniqueVeterinaire = new CliniqueVeterinaire();
+
+        // cliniqueVeterinaireIMediator.getName(), cliniqueVeterinaireIMediator.getMotPasse()).getRole()
+        
+        switch (bdd.getIdentifiant(cliniqueVeterinaireIMediator.getName(),cliniqueVeterinaireIMediator.getMotPasse()).getRole()) {
+            case EnumRole.ADM:
+                break;
+            case EnumRole.VET:
+                viewCliniqueVeterinaire.getGestionClient().setVisible(false);
+                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
+                viewCliniqueVeterinaire.getGestionRDV().setVisible(false);
+                break;
+            case EnumRole.AST:
+                viewCliniqueVeterinaire.getGestionClient().setVisible(false);
+                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
+                viewCliniqueVeterinaire.getGestionRDV().setVisible(false);
+                break;
+            case EnumRole.SEC:
+                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
+                break;
+        }
+        viewCliniqueVeterinaire.setVisible(true);
+    }
+
+    public static synchronized CliniqueVeterinaireController getInstance() {
         if (cliniqueVeterinaireController == null) {
             cliniqueVeterinaireController = new CliniqueVeterinaireController();
         }
@@ -41,7 +69,6 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
         return cliniqueVeterinaireController;
     }
 
-
     @Override
     public void AfficherGestionClient() {
         //Affiche le page de gestion de client. 
@@ -50,12 +77,12 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     @Override
     public void Deconnexion() {
         //Deconnexion de l'application.
-        
+
     }
 
     @Override
     public void AfficherGestionPersonnel() {
-        //Affiche la page de gestion du personnel.
+
     }
 
     @Override
@@ -71,24 +98,6 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     @Override
     public void Fermer() {
         //Fermer l'application.
-    }
-
-    private void GestionRole(String role) {
-        switch (role) {
-            case EnumRole.ADM:
-                break;
-            case EnumRole.AST:
-                viewCliniqueVeterinaire.getAgenda().setVisible(false);
-                viewCliniqueVeterinaire.getGestionClient().setVisible(false);
-                break;
-            case EnumRole.SEC:
-                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
-                break;
-            case EnumRole.VET:
-                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
-                break;
-        }
-
     }
 
     @Override
@@ -109,14 +118,6 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     }
 
     public JFrame getFrame() {
-        return viewCliniqueVeterinaire.getFrame();
+       return viewCliniqueVeterinaire.getFrame();
     }
-
-    @Override
-    public void initView() {
-        viewCliniqueVeterinaire = new CliniqueVeterinaire();
-        viewCliniqueVeterinaire.setVisible(true);
-        viewCliniqueVeterinaire.setLocationRelativeTo(null);
-    }
-
 }

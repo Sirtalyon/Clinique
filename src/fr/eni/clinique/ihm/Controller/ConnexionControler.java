@@ -5,11 +5,14 @@
  */
 package fr.eni.clinique.ihm.Controller;
 
+import fr.eni.clinique.bo.Personnel;
 import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,18 +27,19 @@ public class ConnexionControler implements IControler, IConnexionObserver {
     private Connexion viewConnexion;
     private static ConnexionControler connexionControler;
     private IMediator connexionMediator;
+    private String nom;
+    private String mdp;
 
-    public ConnexionControler() {
+    private ConnexionControler() {
     }
 
-    
     @Override
     public void initView() {
         viewConnexion = new Connexion();
         viewConnexion.setVisible(true);
         viewConnexion.setLocationRelativeTo(null);
     }
-    
+
     public static synchronized ConnexionControler getInstance() {
         if (connexionControler == null) {
             connexionControler = new ConnexionControler();
@@ -52,29 +56,8 @@ public class ConnexionControler implements IControler, IConnexionObserver {
 
     @Override
     public void ValiderConnexion() {
-        
-//        String nom = viewConnexion.getNameTextField().getText();
-//        String mdp = viewConnexion.getPassWordTextField().getText();
-//
-//        GetValuesDataBase bdd = new GetValuesDataBase();
-//
-//        Boolean identifiant = bdd.getIdentifiant(nom, mdp);
-//        String role = getRole(nom, mdp);
-//
-//    }
-//
-//    private Boolean getRole(String id, String mdp) {
-//        String getRoleUser = connexion.getRole(id, mdp);
-//        switch (getRoleUser) {
-//            case EnumRole.ADM:
-//                return isAdmin = true;
-//            case EnumRole.AST:
-//                return isAssistant = true;
-//            case EnumRole.SEC:
-//                return isSecretaire = true;
-//            case EnumRole.VET:
-//                return isVeterinaire = true;
-//        }
+        nom = viewConnexion.getNameTextField().getText();
+        mdp = new String(viewConnexion.getPassWordTextField().getPassword());
         connexionMediator.AfficherCliniqueVeterinaire();
     }
 
@@ -97,6 +80,14 @@ public class ConnexionControler implements IControler, IConnexionObserver {
 
     public JFrame getFrame() {
         return viewConnexion;
+    }
+
+    public String getName() {
+        return  nom;
+    }
+
+    public String getMotPasse() {
+        return mdp;
     }
 
 }

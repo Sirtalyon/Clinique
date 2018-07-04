@@ -5,6 +5,8 @@
  */
 package fr.eni.clinique.ihm.Controller.Mediator;
 
+import fr.eni.clinique.bo.Personnel;
+
 /**
  *
  * @author plaurent2017
@@ -38,6 +40,10 @@ public interface IMediator {
     public void AfficherAgenda();
 
     public void FermerApp();
+    
+    public String getName();
+    
+    public String getMotPasse();
 
     /* 
     Gestion Personnel

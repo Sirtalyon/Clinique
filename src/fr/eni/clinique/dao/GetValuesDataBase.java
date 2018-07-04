@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class GetValuesDataBase {
 
-    public boolean getIdentifiant(String user, String password) {
+    public Personnel getIdentifiant(String user, String password) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
         Personnel perso = new Personnel();
@@ -37,16 +37,21 @@ public class GetValuesDataBase {
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     perso = new Personnel();
-                    return true;
+                    
+                    perso.setNom(rs.getString("Nom"));
+                    perso.setMotDePase(rs.getString("MotPasse"));
+                    perso.setRole(rs.getString("Role"));
+                    
+                    return perso;
                 } else {
-                    return false;
+                    return null;
                 }
             } else {
-                return false;
+                return null;
             }
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            return null;
         }
     }
 

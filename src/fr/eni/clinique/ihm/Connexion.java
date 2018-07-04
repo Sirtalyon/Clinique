@@ -7,7 +7,6 @@ package fr.eni.clinique.ihm;
 
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.IConnexionObserver;
-import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
