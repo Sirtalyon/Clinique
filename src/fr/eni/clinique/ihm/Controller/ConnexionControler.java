@@ -5,6 +5,7 @@
  */
 package fr.eni.clinique.ihm.Controller;
 
+import fr.eni.clinique.dao.EnumRole;
 import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
@@ -20,12 +21,12 @@ import javax.swing.JPanel;
 public class ConnexionControler implements IControler, IConnexionObserver {
 
     private GetValuesDataBase connexion = new GetValuesDataBase();
-    private Connexion viewConnexionPageBuild;
+    private Connexion viewConnexion;
     private static ConnexionControler connexionControler;
     private IMediator connexionMediator;
 
     public ConnexionControler() {
-        viewConnexionPageBuild = new Connexion();
+        viewConnexion = new Connexion();
     }
 
     public static synchronized ConnexionControler getInstance() {
@@ -44,50 +45,49 @@ public class ConnexionControler implements IControler, IConnexionObserver {
 
     @Override
     public void ValiderConnexion() {
-        //Valide la connexion.
+        String nom = viewConnexion.getNameTextField().getText();
+        String mdp = viewConnexion.getPassWordTextField().getText();
+
+        GetValuesDataBase bdd = new GetValuesDataBase();
+
+        Boolean identifiant = bdd.getIdentifiant(nom, mdp);
+        String role = getRole(nom, mdp);
+
     }
 
-    /*private String getRole() {
-        String role = "";
-        Boolean getIdUser = connexion.getIdentifiant(getNameValue(), getPassWordValue());        
-        String getRoleUser = connexion.getRole(getNameValue(), getPassWordValue());
-
-        if (getIdUser) {
-            switch (getRoleUser) {
-                case EnumRole.ADM:
-                    isAdmin = true;
-                    break;
-                case EnumRole.AST:
-                    isAssistant = true;
-                    break;
-                case EnumRole.SEC:
-                    isSecretaire = true;
-                    break;
-                case EnumRole.VET:
-                    isVeterinaire = true;
-                    break;
-            }
-            return role;
+    private Boolean getRole(String id, String mdp) {
+        String getRoleUser = connexion.getRole(id, mdp);
+        switch (getRoleUser) {
+            case EnumRole.ADM:
+                return isAdmin = true;
+            case EnumRole.AST:
+                return isAssistant = true;
+            case EnumRole.SEC:
+                return isSecretaire = true;
+            case EnumRole.VET:
+                return isVeterinaire = true;
         }
-    }*/
-    @Override
-    public void setMediator(IMediator mediator) {
+    }
+}
+
+@Override
+        public void setMediator(IMediator mediator) {
         if (mediator != null) {
             this.connexionMediator = mediator;
         }
     }
 
     @Override
-    public JPanel getPanel() {
+        public JPanel getPanel() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public JDialog getDialogue() {
+        public JDialog getDialogue() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public JFrame getFrame() {
-        return viewConnexionPageBuild;
+        return viewConnexion;
     }
 }

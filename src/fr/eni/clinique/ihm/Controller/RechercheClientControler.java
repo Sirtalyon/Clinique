@@ -11,7 +11,6 @@ import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
 import fr.eni.clinique.ihm.GestionClient.IRechercheClientObserver;
 import fr.eni.clinique.ihm.GestionClient.RechercheClient;
-import fr.eni.clinique.ihm.GestionClient.Session;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,10 +33,8 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
     private List<Client> listClient = new ArrayList<>();
     private JTable tableClient;
 
-    Session session;
-
     public RechercheClientControler() {
-        session = Session.getSession();
+
     }
 
     @Override

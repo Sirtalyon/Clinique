@@ -109,5 +109,4 @@ public class ApplicationMediator implements IMediator {
     public void ValiderConnexion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

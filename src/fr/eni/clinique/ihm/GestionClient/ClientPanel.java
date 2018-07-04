@@ -6,12 +6,9 @@
 package fr.eni.clinique.ihm.GestionClient;
 
 import fr.eni.clinique.ihm.Controller.ClientControler;
-import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import fr.eni.clinique.ihm.IObservable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTextField;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
@@ -22,7 +19,6 @@ import jiconfont.swing.IconFontSwing;
  */
 public class ClientPanel extends javax.swing.JPanel implements IObservable<IClientObserver> {
 
-    Session session;
     private List<IClientObserver> observers = new ArrayList();
 
     /**
@@ -31,7 +27,6 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
     public ClientPanel() {
         IconFontSwing.register(FontAwesome.getIconFont());
         initComponents();
-        session = Session.getSession();
         this.registreObserver(ClientControler.getObserver());
     }
 
