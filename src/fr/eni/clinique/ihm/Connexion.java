@@ -5,7 +5,9 @@
  */
 package fr.eni.clinique.ihm;
 
+import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.IConnexionObserver;
+import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Connexion extends javax.swing.JFrame implements IObservable<IConnex
 
     public Connexion() throws HeadlessException {
         initComponents();
+        this.registreObserver(ConnexionControler.getObserver());
     }
 
     @SuppressWarnings("unchecked")

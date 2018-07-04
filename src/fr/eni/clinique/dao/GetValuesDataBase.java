@@ -28,6 +28,7 @@ public class GetValuesDataBase {
     public boolean getIdentifiant(String user, String password) {
         ConnexionDataBase co = new ConnexionDataBase();
         Connection connect = co.getCo();
+        Personnel perso = new Personnel();
         PreparedStatement stm;
         ResultSet rs;
         try {
@@ -35,6 +36,7 @@ public class GetValuesDataBase {
                 stm = connect.prepareStatement("select * from Personnels where Nom='" + user + "' and MotPasse='" + password + "'");
                 rs = stm.executeQuery();
                 if (rs.next()) {
+                    perso = new Personnel();
                     return true;
                 } else {
                     return false;

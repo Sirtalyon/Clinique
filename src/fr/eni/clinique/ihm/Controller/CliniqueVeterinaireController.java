@@ -24,6 +24,7 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     private IMediator cliniqueVeterinaireIMediator;
 
     public CliniqueVeterinaireController() {
+        viewCliniqueVeterinaire = new CliniqueVeterinaire();
     }
     
         public static synchronized CliniqueVeterinaireController getInstance() {

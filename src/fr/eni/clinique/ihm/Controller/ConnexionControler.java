@@ -43,32 +43,33 @@ public class ConnexionControler implements IControler, IConnexionObserver {
         return connexionControler;
     }
 
-    @Override
+  @Override
     public void ValiderConnexion() {
-        String nom = viewConnexion.getNameTextField().getText();
-        String mdp = viewConnexion.getPassWordTextField().getText();
-
-        GetValuesDataBase bdd = new GetValuesDataBase();
-
-        Boolean identifiant = bdd.getIdentifiant(nom, mdp);
-        String role = getRole(nom, mdp);
-
-    }
-
-    private Boolean getRole(String id, String mdp) {
-        String getRoleUser = connexion.getRole(id, mdp);
-        switch (getRoleUser) {
-            case EnumRole.ADM:
-                return isAdmin = true;
-            case EnumRole.AST:
-                return isAssistant = true;
-            case EnumRole.SEC:
-                return isSecretaire = true;
-            case EnumRole.VET:
-                return isVeterinaire = true;
-        }
-    }
-}
+        
+        
+//        String nom = viewConnexion.getNameTextField().getText();
+//        String mdp = viewConnexion.getPassWordTextField().getText();
+//
+//        GetValuesDataBase bdd = new GetValuesDataBase();
+//
+//        Boolean identifiant = bdd.getIdentifiant(nom, mdp);
+//        String role = getRole(nom, mdp);
+//
+//    }
+//
+//    private Boolean getRole(String id, String mdp) {
+//        String getRoleUser = connexion.getRole(id, mdp);
+//        switch (getRoleUser) {
+//            case EnumRole.ADM:
+//                return isAdmin = true;
+//            case EnumRole.AST:
+//                return isAssistant = true;
+//            case EnumRole.SEC:
+//                return isSecretaire = true;
+//            case EnumRole.VET:
+//                return isVeterinaire = true;
+//        }
+   }
 
 @Override
         public void setMediator(IMediator mediator) {

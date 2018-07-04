@@ -44,8 +44,8 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     private void Rechercher() {
         try {
-            String result = session.getRechercheClientFrameSession().getRechercheTextField().getText();
-            listClient = rechercheClient.rechercheClient(result);
+            //String result = session.getRechercheClientFrameSession().getRechercheTextField().getText();
+            //listClient = rechercheClient.rechercheClient(result);
             FilleTable(listClient);
         } catch (Exception ex) {
             Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,7 +54,6 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     private void FilleTable(List<Client> listClient) {
         try {
-            tableClient = session.getRechercheClientFrameSession().getTableClient();
             DefaultTableModel model = (DefaultTableModel) tableClient.getModel();
 
             model.setRowCount(0);
