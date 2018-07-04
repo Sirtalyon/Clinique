@@ -112,4 +112,11 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
         return viewCliniqueVeterinaire.getFrame();
     }
 
+    @Override
+    public void initView() {
+        viewCliniqueVeterinaire = new CliniqueVeterinaire();
+        viewCliniqueVeterinaire.setVisible(true);
+        viewCliniqueVeterinaire.setLocationRelativeTo(null);
+    }
+
 }

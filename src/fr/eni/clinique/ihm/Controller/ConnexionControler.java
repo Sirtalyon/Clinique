@@ -26,9 +26,16 @@ public class ConnexionControler implements IControler, IConnexionObserver {
     private IMediator connexionMediator;
 
     public ConnexionControler() {
-        viewConnexion = new Connexion();
     }
 
+    
+    @Override
+    public void initView() {
+        viewConnexion = new Connexion();
+        viewConnexion.setVisible(true);
+        viewConnexion.setLocationRelativeTo(null);
+    }
+    
     public static synchronized ConnexionControler getInstance() {
         if (connexionControler == null) {
             connexionControler = new ConnexionControler();
@@ -43,9 +50,8 @@ public class ConnexionControler implements IControler, IConnexionObserver {
         return connexionControler;
     }
 
-  @Override
+    @Override
     public void ValiderConnexion() {
-        
         
 //        String nom = viewConnexion.getNameTextField().getText();
 //        String mdp = viewConnexion.getPassWordTextField().getText();
@@ -69,26 +75,28 @@ public class ConnexionControler implements IControler, IConnexionObserver {
 //            case EnumRole.VET:
 //                return isVeterinaire = true;
 //        }
-   }
+        connexionMediator.AfficherCliniqueVeterinaire();
+    }
 
-@Override
-        public void setMediator(IMediator mediator) {
+    @Override
+    public void setMediator(IMediator mediator) {
         if (mediator != null) {
             this.connexionMediator = mediator;
         }
     }
 
     @Override
-        public JPanel getPanel() {
+    public JPanel getPanel() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-        public JDialog getDialogue() {
+    public JDialog getDialogue() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public JFrame getFrame() {
         return viewConnexion;
     }
+
 }

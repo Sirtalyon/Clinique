@@ -16,6 +16,8 @@ public interface IControler {
 
     void setMediator(IMediator mediator);
     
+    void initView();
+    
     JPanel getPanel();
     
     JDialog getDialogue();

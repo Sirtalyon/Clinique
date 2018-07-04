@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RechercheClientControler implements IControler, IRechercheClientObserver {
 
-    private GetValuesDataBase rechercheClient = new GetValuesDataBase();
+    private GetValuesDataBase ddbRechercheCli = new GetValuesDataBase();
     private RechercheClient viewRechercheClient;
     private static RechercheClientControler rechercheClientControler;
     private IMediator rechercheClientMediator;
@@ -45,7 +45,7 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
     private void Rechercher() {
         try {
             //String result = session.getRechercheClientFrameSession().getRechercheTextField().getText();
-            //listClient = rechercheClient.rechercheClient(result);
+            //listClient = ddbRechercheCli.rechercheClient(result);
             FilleTable(listClient);
         } catch (Exception ex) {
             Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,5 +101,10 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
     @Override
     public JDialog getDialogue() {
        return viewRechercheClient.getDialog();
+    }
+
+    @Override
+    public void initView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

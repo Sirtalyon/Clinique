@@ -44,7 +44,7 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void AfficherCliniqueVeterinaire() {
         CliniqueVeterinaireController cliniqueAffiche = new CliniqueVeterinaireController();
-        cliniqueAffiche.getFrame().setVisible(true);
+        cliniqueAffiche.initView();
     }
 
     @Override
@@ -71,12 +71,13 @@ public class ApplicationMediator implements IMediator {
     public void Deconnexion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     /* 
     Gestion Personnel
      */
     @Override
     public void AfficherGestionPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
@@ -101,8 +102,7 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void AfficherConnexion() {
         ConnexionControler connexion = new ConnexionControler();
-        connexion.getFrame().setVisible(true);
-        connexion.getFrame().setLocationRelativeTo(null);
+        connexion.initView();
     }
 
     @Override
