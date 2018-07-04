@@ -39,8 +39,8 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     public CliniqueVeterinaireController() {
         
     }
-    
-        public static synchronized CliniqueVeterinaireController getInstance() {
+
+    public static synchronized CliniqueVeterinaireController getInstance() {
         if (cliniqueVeterinaireController == null) {
             cliniqueVeterinaireController = new CliniqueVeterinaireController();
         }
@@ -54,7 +54,6 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
         return cliniqueVeterinaireController;
     }
 
-
     @Override
     public void AfficherGestionClient() {
         //Affiche le page de gestion de client. 
@@ -63,7 +62,7 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     @Override
     public void Deconnexion() {
         //Deconnexion de l'application.
-        
+
     }
 
     @Override
@@ -128,24 +127,6 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
         //Fermer l'application.
     }
 
-    private void GestionRole(String role) {
-        switch (role) {
-            case EnumRole.ADM:
-                break;
-            case EnumRole.AST:
-                viewCliniqueVeterinaire.getAgenda().setVisible(false);
-                viewCliniqueVeterinaire.getGestionClient().setVisible(false);
-                break;
-            case EnumRole.SEC:
-                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
-                break;
-            case EnumRole.VET:
-                viewCliniqueVeterinaire.getGestionPersonnel().setVisible(false);
-                break;
-        }
-
-    }
-
     @Override
     public void setMediator(IMediator mediator) {
         if (mediator != null) {
@@ -164,7 +145,7 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     }
 
     public JFrame getFrame() {
-        return viewCliniqueVeterinaire.getFrame();
+       return viewCliniqueVeterinaire.getFrame();
     }
 
     @Override
