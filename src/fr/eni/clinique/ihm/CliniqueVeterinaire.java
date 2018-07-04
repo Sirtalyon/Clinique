@@ -8,6 +8,7 @@ package fr.eni.clinique.ihm;
 import fr.eni.clinique.ihm.GestionPersonnel.GestionPersonnel;
 import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.dao.EnumRole;
+import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
 import fr.eni.clinique.ihm.Controller.ICliniqueVeterinaireObserver;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
      */
     public CliniqueVeterinaire() {
         initComponents();
+        this.registreObserver(CliniqueVeterinaireController.getObserver());
     }
 
     /**
@@ -121,6 +123,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
         ClinqueVeterinaire.add(Agenda);
 
         GestionPersonnel.setText("Gestion du personnel");
+        GestionPersonnel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GestionPersonnelMouseClicked(evt);
+            }
+        });
         GestionPersonnel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GestionPersonnelActionPerformed(evt);
@@ -180,6 +187,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
             obs.Fermer();
         }
     }//GEN-LAST:event_FermerActionPerformed
+
+    private void GestionPersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionPersonnelMouseClicked
+        for (ICliniqueVeterinaireObserver obs : observers) {
+            obs.AfficherGestionPersonnel();
+        }
+    }//GEN-LAST:event_GestionPersonnelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Agenda;
@@ -278,4 +291,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
     public JFrame getFrame() {
         return this;
     }    
+    public void setPanelContainer(JPanel panel)
+    {
+        this.PanelGeneral.removeAll();
+        this.PanelGeneral.add(panel);
+        this.PanelGeneral.revalidate();
+        this.PanelGeneral.repaint();
+        this.pack();
+    }
 }

@@ -1,9 +1,8 @@
 
-import fr.eni.clinique.ihm.CliniqueVeterinaire;
-import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
+import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
 import fr.eni.clinique.ihm.Controller.Mediator.ApplicationMediator;
 import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 
@@ -26,11 +25,13 @@ public class app {
         CliniqueVeterinaireController cliniqueVeterinaireController = CliniqueVeterinaireController.getInstance();
         RechercheClientControler rechercheClientControler = RechercheClientControler.getInstance();
         ClientControler clientControler = ClientControler.getInstance();
+        GestionPersonnelCOntroller personnelController = GestionPersonnelCOntroller.getInstance();
         
         connexionControler.setMediator(app);
         cliniqueVeterinaireController.setMediator(app);
         clientControler.setMediator(app);
         rechercheClientControler.setMediator(app);
+        personnelController.setMediator(app);
         
         connexionControler.initView();
     }

@@ -76,6 +76,7 @@ public class ConnexionControler implements IControler, IConnexionObserver {
 //                return isVeterinaire = true;
 //        }
         connexionMediator.AfficherCliniqueVeterinaire();
+        viewConnexion.dispose();
     }
 
     @Override

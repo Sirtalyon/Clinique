@@ -46,6 +46,7 @@ public class PersonnelAdd extends javax.swing.JFrame {
         ButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Ajouter Personnel");
         setResizable(false);
 
         TextName.setToolTipText("");

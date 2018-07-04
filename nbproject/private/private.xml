@@ -3,25 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/ClientControler.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/IConnexionObserver.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/ApplicationMediator.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/CliniqueVeterinaire.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/ClientPanel.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/GetValuesDataBase.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/ControlerTemplate.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/IRechercheClientObserver.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/IControler.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/ConnexionControler.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/IClientObserver.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/CliniqueVeterinaireController.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/EnumRole.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Connexion.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/ICliniqueVeterinaireObserver.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/app.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/RechercheClientControler.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/IMediator.java</file>
-            <file>file:/C:/Users/plaurent2017/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/RechercheClient.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bll/GestionPersonnelManager.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/ApplicationMediator.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Veterinaire.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/GestionPersonnelCOntroller.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/ClientControler.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/ClientPanel.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Personnel.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/properties/settings.properties</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/CliniqueVeterinaire.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/DALException.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/GetValuesDataBase.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Animal.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/properties/Configuration.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/EnumRole.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionPersonnel/IGestionPersonnelObserver.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Client.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/RechercheClientControler.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bll/ClientManager.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionPersonnel/GestionPersonnel.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Admin.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/IMediator.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/RechercheClient.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/test/fr/eni/clinique/dao/ConnexionDataBaseTest.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/IClientObserver.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bo/Race.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/GestionClient/IRechercheClientObserver.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/dao/ConnexionDataBase.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/app.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/bll/BLLException.java</file>
+            <file>file:/C:/Users/Administrateur/Desktop/Repo/Clinique/src/fr/eni/clinique/ihm/Controller/Mediator/IControler.java</file>
         </group>
     </open-files>
 </project-private>

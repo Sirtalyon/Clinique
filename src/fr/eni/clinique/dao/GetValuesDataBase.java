@@ -5,8 +5,10 @@
  */
 package fr.eni.clinique.dao;
 
+import fr.eni.clinique.bo.Animal;
 import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.bo.Personnel;
+import fr.eni.clinique.bo.Race;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -277,6 +279,52 @@ public class GetValuesDataBase {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    
+    public boolean addAnimal(String nomAnimal, String sexe, String couleur, String race, String espece, String codeClient, String tatouage, Boolean archive) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        Statement stm;
+        int rs = 0;
+        try {
+            if (nomAnimal != null && race != null && espece != null) {
+                stm = connect.createStatement();
+                rs = stm.executeUpdate("INSERT INTO Animaux (NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive) VALUES ('" + nomAnimal + "', '" + sexe + "', '" + couleur + "', '" + race + "', '" + espece + "', '" + codeClient + "', '" + tatouage + "', ' ', 'false')");
+                if (rs == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
+        }
+    }
+    
+    public List<Race> SelAnimaux(String espece){
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        List<Race> races = new ArrayList<>();
+        try {
+
+            stm = connect.prepareStatement("select Race from Races where Espece='" + espece + "'");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Race race = new Race();
+                race.setRace(rs.getString("Race"));
+                races.add(race);
+            }
+            return races;
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
     }
     
 }

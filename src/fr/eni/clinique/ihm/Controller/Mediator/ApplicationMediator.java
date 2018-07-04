@@ -8,13 +8,17 @@ package fr.eni.clinique.ihm.Controller.Mediator;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
+import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
 
 /**
  *
  * @author plaurent2017
  */
 public class ApplicationMediator implements IMediator {
-
+    
+    GestionPersonnelCOntroller gestionPersonnelCOntroller = new GestionPersonnelCOntroller();
+    
+    CliniqueVeterinaireController cliniqueVeterinaireController = new CliniqueVeterinaireController();
     /* 
     Gestion Client 
      */
@@ -77,7 +81,9 @@ public class ApplicationMediator implements IMediator {
      */
     @Override
     public void AfficherGestionPersonnel() {
-
+        gestionPersonnelCOntroller.initView();
+        cliniqueVeterinaireController.setPanelContainer(gestionPersonnelCOntroller.getPanel());
+        
     }
 
     @Override
