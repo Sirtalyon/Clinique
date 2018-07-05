@@ -11,6 +11,7 @@ import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -46,8 +47,7 @@ public class ClientControler implements IControler, IClientObserver {
 
     @Override
     public void AfficherRecherche() {
-        //Affiche la recherche
-
+        clientMediator.AfficherRechercheClient();
     }
 
     @Override
@@ -96,6 +96,25 @@ public class ClientControler implements IControler, IClientObserver {
     public JDialog getDialogue() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public void setNomCli(String nomCli) {
+        viewCLient.getNomTextField().setText(nomCli);
+    }
+
+    public void setPrenomCli(String prenomCli) {
+        viewCLient.getPrenomTextField().setText(prenomCli);
+    }
+
+    public void setCodeCli(int codeCli) {
+        viewCLient.getCodeTextField().setText(String.valueOf(codeCli));
+    }
+
+    public void setVilleCli(String villeCli) {
+        viewCLient.getVilleTextField().setText(villeCli);
+    }
+
+    public void setCodePostalNomCli(String codePostalCli) {
+        viewCLient.getCodePostalTextField().setText(codePostalCli);
+    }
 
 }

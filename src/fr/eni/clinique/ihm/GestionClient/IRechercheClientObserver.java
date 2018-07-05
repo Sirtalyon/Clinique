@@ -14,4 +14,6 @@ import java.util.Observer;
 public interface IRechercheClientObserver {
 
     public void RechercheClientBouton();
+
+    public void AfficherClientInfoFramePrincipal();
 }

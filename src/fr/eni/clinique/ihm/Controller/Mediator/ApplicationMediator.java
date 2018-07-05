@@ -5,11 +5,14 @@
  */
 package fr.eni.clinique.ihm.Controller.Mediator;
 
+import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
+import fr.eni.clinique.ihm.Controller.RechercheClientControler;
+import javax.swing.JFrame;
 
 /**
  *
@@ -23,6 +26,7 @@ public class ApplicationMediator implements IMediator {
     private CliniqueVeterinaireController veterinaireController;
     private ClientControler clientControler;
     private ConnexionControler connexion;
+    private RechercheClientControler rechercheClientControler;
 
     public ApplicationMediator() {
         connexionControler = ConnexionControler.getInstance();
@@ -30,6 +34,7 @@ public class ApplicationMediator implements IMediator {
         clientControler = ClientControler.getInstance();
         connexion = ConnexionControler.getInstance();
         gestionPersonnelCOntroller  = GestionPersonnelCOntroller.getInstance();
+        rechercheClientControler = RechercheClientControler.getInstance();
     }
 
     /* 
@@ -42,7 +47,7 @@ public class ApplicationMediator implements IMediator {
 
     @Override
     public void AfficherRechercheClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        rechercheClientControler.initView();
     }
 
     @Override
@@ -53,6 +58,15 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void SupprimerClinet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void AfficherInfoRechercheClient(Client infoClient) {
+        clientControler.setCodeCli(infoClient.getCodeClient());
+        clientControler.setNomCli(infoClient.getNomClient());
+        clientControler.setPrenomCli(infoClient.getPrenomClient());
+        clientControler.setCodePostalNomCli(infoClient.getCodePostal());
+        clientControler.setVilleCli(infoClient.getVille());        
     }
 
     /* 
@@ -138,5 +152,11 @@ public class ApplicationMediator implements IMediator {
     public void ValiderConnexion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public JFrame getFrameVeterinaire() {
+        return veterinaireController.getFrame();
+    }
+
 
 }

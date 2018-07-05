@@ -101,7 +101,7 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     }
 
     public JFrame getFrame() {
-       return viewCliniqueVeterinaire.getFrame();
+       return viewCliniqueVeterinaire;
     }
 
     @Override

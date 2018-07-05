@@ -111,6 +111,11 @@ public class RechercheClient extends javax.swing.JDialog implements IObservable<
             }
         });
         TableClient.removeColumn(TableClient.getColumnModel().getColumn(0));
+        TableClient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableClientMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TableClient);
 
         javax.swing.GroupLayout tableClientPanelLayout = new javax.swing.GroupLayout(tableClientPanel);
@@ -159,6 +164,12 @@ public class RechercheClient extends javax.swing.JDialog implements IObservable<
         }
     }//GEN-LAST:event_rechercheBoutonActionPerformed
 
+    private void TableClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableClientMouseClicked
+        for (IRechercheClientObserver obs : observers) {
+            obs.AfficherClientInfoFramePrincipal();
+        }
+    }//GEN-LAST:event_TableClientMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableClient;
     private javax.swing.JScrollPane jScrollPane1;
@@ -177,7 +188,7 @@ public class RechercheClient extends javax.swing.JDialog implements IObservable<
     }
 
     public JTextField getRechercheTextField() {
-        return rechercheTextField;        
+        return rechercheTextField;
     }
 
     public void setRechercheTextField(JTextField rechercheTextField) {
@@ -191,11 +202,11 @@ public class RechercheClient extends javax.swing.JDialog implements IObservable<
     public void setTableClientPanel(JPanel tableClientPanel) {
         this.tableClientPanel = tableClientPanel;
     }
-  
-    public JDialog getDialog(){
+
+    public JDialog getDialog() {
         return this;
     }
-        
+
     @Override
     public void registreObserver(IRechercheClientObserver observer) {
         this.observers.add(observer);

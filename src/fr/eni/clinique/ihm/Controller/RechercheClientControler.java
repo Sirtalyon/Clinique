@@ -6,6 +6,7 @@
 package fr.eni.clinique.ihm.Controller;
 
 import fr.eni.clinique.bo.Client;
+import fr.eni.clinique.bo.Personnel;
 import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
@@ -33,8 +34,13 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
     private List<Client> listClient = new ArrayList<>();
     private JTable tableClient;
 
-
     public RechercheClientControler() {
+    }
+
+    @Override
+    public void initView() {
+        viewRechercheClient = new RechercheClient(rechercheClientMediator.getFrameVeterinaire(), true);
+        viewRechercheClient.setVisible(true);
     }
 
     @Override
@@ -44,8 +50,7 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     private void Rechercher() {
         try {
-            //String result = session.getRechercheClientFrameSession().getRechercheTextField().getText();
-            //listClient = ddbRechercheCli.rechercheClient(result);
+            listClient = ddbRechercheCli.rechercheClient(viewRechercheClient.getRechercheTextField().getText());
             FilleTable(listClient);
         } catch (Exception ex) {
             Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,7 +59,7 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     private void FilleTable(List<Client> listClient) {
         try {
-            DefaultTableModel model = (DefaultTableModel) tableClient.getModel();
+            DefaultTableModel model = (DefaultTableModel) viewRechercheClient.getTableClient().getModel();
 
             model.setRowCount(0);
 
@@ -67,6 +72,7 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
                     client.getVille()
                 });
             }
+            viewRechercheClient.getTableClient().setModel(model);
         } catch (Exception ex) {
             Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -95,16 +101,47 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     @Override
     public JPanel getPanel() {
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public JDialog getDialogue() {
-       return viewRechercheClient.getDialog();
+        return viewRechercheClient.getDialog();
+    }
+
+    private Client InfoClient() {
+        Client cli = new Client();
+        int row = viewRechercheClient.getTableClient().getSelectedRow();
+        int code = (int) viewRechercheClient.getTableClient().getModel().getValueAt(row, 0);
+        String nom = viewRechercheClient.getTableClient().getModel().getValueAt(row, 1).toString();
+        String prenom = viewRechercheClient.getTableClient().getModel().getValueAt(row, 2).toString();
+        String codePostal = viewRechercheClient.getTableClient().getModel().getValueAt(row, 3).toString();
+        String ville = viewRechercheClient.getTableClient().getModel().getValueAt(row, 4).toString();
+        if (nom == null) {
+            nom = new String();
+        }
+        if (prenom == null) {
+            prenom = new String();
+        }
+        if (codePostal == null) {
+            codePostal = new String();
+        }
+        if (ville == null) {
+            ville = new String();
+        }
+        cli.setCodeClient(code);
+        cli.setNomClient(nom);
+        cli.setPrenomClient(prenom);
+        cli.setCodePostal(codePostal);
+        cli.setVille(ville);
+
+        return cli;
     }
 
     @Override
-    public void initView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AfficherClientInfoFramePrincipal() {
+
+        rechercheClientMediator.AfficherInfoRechercheClient(this.InfoClient());
+
     }
 }

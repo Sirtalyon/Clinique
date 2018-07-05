@@ -5,7 +5,9 @@
  */
 package fr.eni.clinique.ihm.Controller.Mediator;
 
+import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.bo.Personnel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -13,6 +15,8 @@ import fr.eni.clinique.bo.Personnel;
  */
 public interface IMediator {
 
+    
+    public JFrame getFrameVeterinaire();
     /* 
     Gestion Client 
      */
@@ -60,5 +64,7 @@ public interface IMediator {
     public void AfficherConnexion();
     
     public void ValiderConnexion();
+
+    public void AfficherInfoRechercheClient(Client InfoClient);
 
 }
