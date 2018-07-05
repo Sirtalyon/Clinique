@@ -174,34 +174,41 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
         VilleLabel.setToolTipText("");
         VilleLabel.setName("Ville"); // NOI18N
 
+        CodeTextField.setEditable(false);
         CodeTextField.setName("CodeTextField"); // NOI18N
 
+        AdresseTextField1.setEditable(false);
         AdresseTextField1.setName("AdresseTextField"); // NOI18N
 
+        NomTextField.setEditable(false);
         NomTextField.setName("NomTextField"); // NOI18N
 
         CodeLabel.setText("Code");
         CodeLabel.setToolTipText("Code");
         CodeLabel.setName("Code"); // NOI18N
 
+        PrenomTextField.setEditable(false);
         PrenomTextField.setName("PrenomTextField"); // NOI18N
 
         NomLabel.setText("Nom");
         NomLabel.setToolTipText("");
         NomLabel.setName("Nom"); // NOI18N
 
+        AdresseTextField.setEditable(false);
         AdresseTextField.setName("AdresseTextField"); // NOI18N
 
         PrenomLabel.setText("Prénom");
         PrenomLabel.setToolTipText("");
         PrenomLabel.setName("Prenom"); // NOI18N
 
+        CodePostalTextField.setEditable(false);
         CodePostalTextField.setName("CodePostalTextField"); // NOI18N
 
         AdresseLabel.setText("Adresse");
         AdresseLabel.setToolTipText("");
         AdresseLabel.setName("Adresse"); // NOI18N
 
+        VilleTextField.setEditable(false);
         VilleTextField.setName("VilleTextField"); // NOI18N
 
         CodePostalLabel.setText("CodePostal");

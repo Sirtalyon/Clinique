@@ -332,4 +332,27 @@ public class GetValuesDataBase {
 
     }
     
+        public boolean addClient(Client client) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        Statement stm;
+        int rs = 0;
+        try {
+            if (client.getNomClient() != null && client.getPrenomClient() != null && client.getVille() != null) {
+                stm = connect.createStatement();
+                rs = stm.executeUpdate("INSERT INTO Clients (NomClient, PrenomClient, Adresse1, Adresse2, CodePostal, Ville, Archive) VALUES ('" + client.getNomClient() + "', '" + client.getPrenomClient()+ "', '" + client.getAdresse1() + "', '" + client.getAdresse2() + "', '" + client.getCodePostal() + "', '" + client.getVille() + "', 'false')");
+                if (rs == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
+        }
+    }
+    
 }

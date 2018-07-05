@@ -23,7 +23,7 @@ public class ClientControler implements IControler, IClientObserver {
     private ClientPanel viewCLient;
     private IMediator clientMediator;
 
-    private void ControlerTemplate() {
+    private void ClientControler() {
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ClientControler implements IControler, IClientObserver {
 
     @Override
     public void AjoutClient() {
-        //Ajout CLient. 
+        clientMediator.AfficherAjoutClient();
     }
 
     @Override

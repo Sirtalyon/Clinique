@@ -17,6 +17,7 @@ public interface IMediator {
 
     
     public JFrame getFrameVeterinaire();
+    
     /* 
     Gestion Client 
      */
@@ -27,6 +28,8 @@ public interface IMediator {
     public void AfficherAjoutClient();
 
     public void SupprimerClinet();
+    
+    public void ValiderClient();
 
     /* 
     Clinique Veterinaire
