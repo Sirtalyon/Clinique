@@ -6,8 +6,10 @@
 package fr.eni.clinique.ihm.Controller.Mediator;
 
 import fr.eni.clinique.ihm.Connexion;
+import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
+import fr.eni.clinique.ihm.GestionPersonnel.GestionPersonnel;
 
 /**
  *
@@ -17,10 +19,14 @@ public class ApplicationMediator implements IMediator {
 
     private ConnexionControler connexionControler;
     private CliniqueVeterinaireController veterinaireController;
+    private ClientControler clientControler;
+    private ConnexionControler connexion;
 
     public ApplicationMediator() {
         connexionControler = ConnexionControler.getInstance();
         veterinaireController = CliniqueVeterinaireController.getInstance();
+        clientControler = ClientControler.getInstance();
+        connexion = ConnexionControler.getInstance();
     }
 
     /* 
@@ -66,7 +72,7 @@ public class ApplicationMediator implements IMediator {
 
     @Override
     public void AfficherGestionClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clientControler.initView();
     }
 
     @Override
@@ -118,7 +124,6 @@ public class ApplicationMediator implements IMediator {
      */
     @Override
     public void AfficherConnexion() {
-        ConnexionControler connexion = ConnexionControler.getInstance();
         connexion.initView();
     }
 

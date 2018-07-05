@@ -71,7 +71,7 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
 
     @Override
     public void AfficherGestionClient() {
-        //Affiche le page de gestion de client. 
+        cliniqueVeterinaireIMediator.AfficherGestionClient();
     }
 
     @Override

@@ -7,6 +7,7 @@ package fr.eni.clinique.ihm.Controller;
 
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
+import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -18,9 +19,16 @@ import javax.swing.JPanel;
 public class ClientControler implements IControler, IClientObserver {
 
     private static ClientControler clientControler;
+    private ClientPanel viewCLient;
     private IMediator clientMediator;
 
     private void ControlerTemplate() {
+    }
+
+    @Override
+    public void initView() {
+        viewCLient = new ClientPanel();
+        viewCLient.setVisible(true);
     }
 
     public static synchronized ClientControler getInstance() {
@@ -87,11 +95,6 @@ public class ClientControler implements IControler, IClientObserver {
 
     @Override
     public JDialog getDialogue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void initView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
