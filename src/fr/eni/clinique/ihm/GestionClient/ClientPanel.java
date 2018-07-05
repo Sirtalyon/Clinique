@@ -499,8 +499,7 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
     public void setVilleTextField(JTextField VilleTextField) {
         this.VilleTextField = VilleTextField;
     }
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdresseLabel;
     private javax.swing.JTextField AdresseTextField;

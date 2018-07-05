@@ -33,8 +33,8 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
     private List<Client> listClient = new ArrayList<>();
     private JTable tableClient;
 
-    public RechercheClientControler() {
 
+    public RechercheClientControler() {
     }
 
     @Override

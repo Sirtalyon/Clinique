@@ -7,23 +7,29 @@ package fr.eni.clinique.ihm.GestionPersonnel;
 
 import fr.eni.clinique.bo.Personnel;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
+import fr.eni.clinique.ihm.IObservable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Administrateur
  */
-public class GestionPersonnel extends javax.swing.JPanel {
+public class GestionPersonnel extends javax.swing.JPanel implements IObservable<IGestionPersonnelObserver>{
 
     PersonnelAdd personnel;
-
+    private List<IGestionPersonnelObserver> observers = new ArrayList();
     /**
      * Creates new form GestionPersonnel
      */
     public GestionPersonnel() {
-        initFrame();
+        initComponents();
+        this.registreObserver(GestionPersonnelCOntroller.getObserver());
     }
 
     /**
@@ -162,36 +168,7 @@ public class GestionPersonnel extends javax.swing.JPanel {
         String password = TablePersonnel.getModel().getValueAt(row, 2).toString();
         String codeEmp = get.getCodeEmp(nom, role);
         boolean isSupp = get.archivePersonnel(codeEmp);
-        if (isSupp) {
-            this.initFrame();
-        }
     }//GEN-LAST:event_buttonDelActionPerformed
-
-    public void initFrame() {
-        personnel = new PersonnelAdd();
-        initComponents();
-        GetValuesDataBase getall = new GetValuesDataBase();
-        List<Personnel> persos = new ArrayList<>();
-        persos = getall.getAll();
-        DefaultTableModel tm = new DefaultTableModel(persos.size(), 3);
-        TablePersonnel.setModel(tm);
-        TablePersonnel.getColumnModel().getColumn(0).setHeaderValue("Nom");
-        TablePersonnel.getColumnModel().getColumn(1).setHeaderValue("Rôle");
-        TablePersonnel.getColumnModel().getColumn(2).setHeaderValue("Mot de Passe");
-        TablePersonnel.getTableHeader().repaint();
-
-        int i = 0;
-        for (Personnel perso : persos) {
-            if (!perso.isArchive()) {
-                TablePersonnel.setValueAt(perso.getNom(), i, 0);
-                TablePersonnel.setValueAt(perso.getRole(), i, 1);
-                TablePersonnel.setValueAt(perso.getMotDePase(), i, 2);
-                i++;
-            }
-
-        }
-        tm.fireTableDataChanged();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelGestionPersonnel;
@@ -201,4 +178,27 @@ public class GestionPersonnel extends javax.swing.JPanel {
     private javax.swing.JButton buttonReinit;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void registreObserver(IGestionPersonnelObserver observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unregistreObserver(IGestionPersonnelObserver observer) {
+        this.observers.remove(observer);
+    }    
+    
+    public JPanel getPanel() {
+        return this;
+    }  
+
+    public JTable getTablePersonnel() {
+        return TablePersonnel;
+    }
+
+    public void setTablePersonnel(JTable TablePersonnel) {
+        this.TablePersonnel = TablePersonnel;
+    }
+    
 }

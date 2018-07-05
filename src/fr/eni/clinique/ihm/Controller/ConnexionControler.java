@@ -59,6 +59,7 @@ public class ConnexionControler implements IControler, IConnexionObserver {
         nom = viewConnexion.getNameTextField().getText();
         mdp = new String(viewConnexion.getPassWordTextField().getPassword());
         connexionMediator.AfficherCliniqueVeterinaire();
+        viewConnexion.dispose();
     }
 
     @Override
