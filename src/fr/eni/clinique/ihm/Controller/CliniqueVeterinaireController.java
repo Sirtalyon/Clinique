@@ -30,11 +30,9 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
 
     private GetValuesDataBase getPersonnel = new GetValuesDataBase();
     private CliniqueVeterinaire viewCliniqueVeterinaire;
-    private GestionPersonnel viewGestionPersonnel;
     private static CliniqueVeterinaireController cliniqueVeterinaireController;
     private IMediator cliniqueVeterinaireIMediator;
-    private List<Personnel> listPersonnel = new ArrayList<>();
-    private JTable tablePersonnel;
+
 
     public CliniqueVeterinaireController() {
         
@@ -67,51 +65,9 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
 
     @Override
     public void AfficherGestionPersonnel() {
-        
-        Afficher();
-    }
-
-    private void Afficher(){
-        
         cliniqueVeterinaireIMediator.AfficherGestionPersonnel();
-//        try {
-//            listPersonnel = getPersonnel.getAll();
-//            FilleTable(listPersonnel);
-//        } catch (Exception ex) {
-//            Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-       
     }
-    
-//    private void FilleTable(List<Personnel> listPersonnel) {
-//        try {
-//            DefaultTableModel model = (DefaultTableModel) tablePersonnel.getModel();
-//
-//            model.setRowCount(0);
-//
-//            for (Personnel personnel : listPersonnel) {
-//                model.addRow(new Object[]{
-//                    personnel.getNom(),
-//                    personnel.getRole(),
-//                    changeMDP(personnel.getMotDePase())
-//                });
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//    
-//    private String changeMDP(String mdp)
-//    {
-//        String mdpEtoile = "";
-//        for(int i = 0; i<mdp.length(); i++)
-//        {
-//            mdpEtoile += "*";
-//        }
-//        return mdpEtoile;
-//    }
-    
-    
+       
     @Override
     public void AfficherAgenda() {
         //Affiche la page Agenda.
@@ -152,11 +108,12 @@ public class CliniqueVeterinaireController implements IControler, ICliniqueVeter
     public void initView() {
         viewCliniqueVeterinaire = new CliniqueVeterinaire();
         viewCliniqueVeterinaire.setVisible(true);
+        viewCliniqueVeterinaire.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
     public void setPanelContainer(JPanel panel)
     {
-        viewCliniqueVeterinaire.setPanelContainer(panel);
+                viewCliniqueVeterinaire.setPanelContainer(panel);
     }
 
 }

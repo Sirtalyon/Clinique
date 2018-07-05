@@ -17,11 +17,8 @@ import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
  */
 public class ApplicationMediator implements IMediator {
     
-    GestionPersonnelCOntroller gestionPersonnelCOntroller = new GestionPersonnelCOntroller();
+    private GestionPersonnelCOntroller gestionPersonnelCOntroller;
     
-    CliniqueVeterinaireController cliniqueVeterinaireController = new CliniqueVeterinaireController();
-
-
     private ConnexionControler connexionControler;
     private CliniqueVeterinaireController veterinaireController;
     private ClientControler clientControler;
@@ -32,6 +29,7 @@ public class ApplicationMediator implements IMediator {
         veterinaireController = CliniqueVeterinaireController.getInstance();
         clientControler = ClientControler.getInstance();
         connexion = ConnexionControler.getInstance();
+        gestionPersonnelCOntroller  = GestionPersonnelCOntroller.getInstance();
     }
 
     /* 
@@ -78,6 +76,8 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void AfficherGestionClient() {
         clientControler.initView();
+        veterinaireController.setPanelContainer(clientControler.getPanel());
+        
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void AfficherGestionPersonnel() {
         gestionPersonnelCOntroller.initView();
-        cliniqueVeterinaireController.setPanelContainer(gestionPersonnelCOntroller.getPanel());
+        veterinaireController.setPanelContainer(gestionPersonnelCOntroller.getPanel());
         
     }
 

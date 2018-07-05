@@ -30,8 +30,7 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
     private List<Personnel> listPersonnel = new ArrayList<>();
     private GetValuesDataBase getPersonnel = new GetValuesDataBase();
 
-    public GestionPersonnelCOntroller() {
-        
+    private GestionPersonnelCOntroller() {
     }
     
     public static synchronized GestionPersonnelCOntroller getInstance() {
@@ -58,7 +57,7 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
 
     @Override
     public JPanel getPanel() {
-        return viewGestionPersonnel.getPanel();
+        return viewGestionPersonnel;
     }
 
     @Override
@@ -68,8 +67,6 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
 
     @Override
     public void AfficherPersonnel() {
-        GestionPersonnelCOntroller gestionPersonnelCOntroller = new GestionPersonnelCOntroller();
-        gestionPersonnelCOntroller.getPanel().setVisible(true);
     }
 
     private void Afficher(){
@@ -130,8 +127,7 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
     @Override
     public void initView() {
         viewGestionPersonnel = new GestionPersonnel();
-        viewGestionPersonnel.setVisible(true);
-        Afficher();
+        //   Afficher();
     }
     
 }

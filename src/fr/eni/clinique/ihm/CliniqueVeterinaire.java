@@ -14,6 +14,7 @@ import fr.eni.clinique.ihm.Controller.ICliniqueVeterinaireObserver;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -57,20 +58,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clinique Veterinaire");
-        setName("CliniqueVeterinaire"); // NOI18N
+        setName(""); // NOI18N
 
-        PanelGeneral.setMinimumSize(new java.awt.Dimension(32767, 32767));
-
-        javax.swing.GroupLayout PanelGeneralLayout = new javax.swing.GroupLayout(PanelGeneral);
-        PanelGeneral.setLayout(PanelGeneralLayout);
-        PanelGeneralLayout.setHorizontalGroup(
-            PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
-        );
-        PanelGeneralLayout.setVerticalGroup(
-            PanelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, Short.MAX_VALUE, Short.MAX_VALUE)
-        );
+        PanelGeneral.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        PanelGeneral.setPreferredSize(new java.awt.Dimension(0, 0));
+        PanelGeneral.setLayout(new java.awt.BorderLayout());
 
         ClinqueVeterinaire.setToolTipText("");
 
@@ -141,11 +133,11 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
         );
 
         pack();
@@ -288,11 +280,12 @@ public class CliniqueVeterinaire extends javax.swing.JFrame implements IObservab
     public void setPriseRDV(JMenuItem PriseRDV) {
         this.PriseRDV = PriseRDV;
     }
+
     public JFrame getFrame() {
         return this;
-    }    
-    public void setPanelContainer(JPanel panel)
-    {
+    }
+
+    public void setPanelContainer(JPanel panel) {
         this.PanelGeneral.removeAll();
         this.PanelGeneral.add(panel);
         this.PanelGeneral.revalidate();

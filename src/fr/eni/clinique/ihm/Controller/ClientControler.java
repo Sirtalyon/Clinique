@@ -28,7 +28,6 @@ public class ClientControler implements IControler, IClientObserver {
     @Override
     public void initView() {
         viewCLient = new ClientPanel();
-        viewCLient.setVisible(true);
     }
 
     public static synchronized ClientControler getInstance() {
@@ -90,12 +89,13 @@ public class ClientControler implements IControler, IClientObserver {
 
     @Override
     public JPanel getPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return viewCLient;
     }
 
     @Override
     public JDialog getDialogue() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
 }

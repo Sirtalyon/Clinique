@@ -1,4 +1,5 @@
 
+import fr.eni.clinique.ihm.CliniqueVeterinaire;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
