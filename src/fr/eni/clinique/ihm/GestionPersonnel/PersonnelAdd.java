@@ -7,20 +7,28 @@ package fr.eni.clinique.ihm.GestionPersonnel;
 
 import fr.eni.clinique.ihm.GestionPersonnel.GestionPersonnel;
 import fr.eni.clinique.dao.GetValuesDataBase;
+import fr.eni.clinique.ihm.Controller.AddPersonnelController;
+import fr.eni.clinique.ihm.Controller.ReinitPasswordController;
+import fr.eni.clinique.ihm.IObservable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Administrateur
  */
-public class PersonnelAdd extends javax.swing.JFrame {
+public class PersonnelAdd extends javax.swing.JFrame implements IObservable<IGestionPersonnelObserver>  {
     
+    
+    private List<IGestionPersonnelObserver> observers = new ArrayList();
     /**
      * Creates new form PersonnelAdd
      */
     public PersonnelAdd() {
         initComponents();
         setLocationRelativeTo(null);
+        this.registreObserver(AddPersonnelController.getObserver());
     }
 
     public void initFrame() {
@@ -45,7 +53,7 @@ public class PersonnelAdd extends javax.swing.JFrame {
         ButtonAdd = new javax.swing.JButton();
         ButtonAnnuler = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajouter Personnel");
         setResizable(false);
 
@@ -157,8 +165,10 @@ public class PersonnelAdd extends javax.swing.JFrame {
         boolean isAdd = addPerso.addPersonnel(TextName.getText(), role, TextPassword.getText());
         if(isAdd)
         {
-            GestionPersonnel perso = new GestionPersonnel();
-            this.dispose();
+            for (IGestionPersonnelObserver obs : observers) {
+                obs.AfficherPersonnel();
+                this.dispose();
+            }
         }else
         {
             
@@ -210,4 +220,14 @@ public class PersonnelAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void registreObserver(IGestionPersonnelObserver observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unregistreObserver(IGestionPersonnelObserver observer) {
+        this.observers.remove(observer);
+    }
 }

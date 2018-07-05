@@ -10,6 +10,7 @@ import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
 import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -115,6 +116,16 @@ public class ClientControler implements IControler, IClientObserver {
 
     public void setCodePostalNomCli(String codePostalCli) {
         viewCLient.getCodePostalTextField().setText(codePostalCli);
+    }
+
+    @Override
+    public JFrame getFrame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initView(String password, String codeEmp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

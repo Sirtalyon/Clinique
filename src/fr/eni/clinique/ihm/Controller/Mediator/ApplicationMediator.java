@@ -7,11 +7,13 @@ package fr.eni.clinique.ihm.Controller.Mediator;
 
 import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.ihm.Connexion;
+import fr.eni.clinique.ihm.Controller.AddPersonnelController;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
 import fr.eni.clinique.ihm.Controller.RechercheClientControler;
+import fr.eni.clinique.ihm.Controller.ReinitPasswordController;
 import javax.swing.JFrame;
 
 /**
@@ -27,6 +29,8 @@ public class ApplicationMediator implements IMediator {
     private ClientControler clientControler;
     private ConnexionControler connexion;
     private RechercheClientControler rechercheClientControler;
+    private ReinitPasswordController reinitPasswordController;
+    private AddPersonnelController addPersonnelController;
 
     public ApplicationMediator() {
         connexionControler = ConnexionControler.getInstance();
@@ -35,6 +39,8 @@ public class ApplicationMediator implements IMediator {
         connexion = ConnexionControler.getInstance();
         gestionPersonnelCOntroller  = GestionPersonnelCOntroller.getInstance();
         rechercheClientControler = RechercheClientControler.getInstance();
+        reinitPasswordController = ReinitPasswordController.getInstance();
+        addPersonnelController = AddPersonnelController.getInstance();
     }
 
     /* 
@@ -126,7 +132,7 @@ public class ApplicationMediator implements IMediator {
 
     @Override
     public void AjoutPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        addPersonnelController.initView();
     }
 
     @Override
@@ -135,8 +141,8 @@ public class ApplicationMediator implements IMediator {
     }
 
     @Override
-    public void ModifierMotDePasse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ModifierMotDePasse(String password, String codeEmp) {
+        reinitPasswordController.initView(password, codeEmp);
     }
 
 
@@ -156,6 +162,11 @@ public class ApplicationMediator implements IMediator {
     @Override
     public JFrame getFrameVeterinaire() {
         return veterinaireController.getFrame();
+    }
+
+    @Override
+    public void AfficherPersonnel() {
+        gestionPersonnelCOntroller.AfficherPersonnel();
     }
 
 

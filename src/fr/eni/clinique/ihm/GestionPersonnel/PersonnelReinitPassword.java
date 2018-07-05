@@ -6,29 +6,40 @@
 package fr.eni.clinique.ihm.GestionPersonnel;
 
 import fr.eni.clinique.dao.GetValuesDataBase;
+import fr.eni.clinique.ihm.Controller.ReinitPasswordController;
+import fr.eni.clinique.ihm.IObservable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Administrateur
  */
-public class PersonnelReinitPassword extends javax.swing.JFrame {
+public class PersonnelReinitPassword extends javax.swing.JFrame implements IObservable<IGestionPersonnelObserver> {
 
+    String password = "";
     String codeEmploye = "";
+    
+    private List<IGestionPersonnelObserver> observers = new ArrayList();
 
     /**
      * Creates new form PersonnelReinitPassword
      */
     public PersonnelReinitPassword() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.registreObserver(ReinitPasswordController.getObserver());
            
     }
-
-    public void initFrame(String codeEmp) {
+    
+    public PersonnelReinitPassword(String password, String codeEmp) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.registreObserver(ReinitPasswordController.getObserver());
+        this.password = password;
         codeEmploye = codeEmp;
-        GetValuesDataBase get = new GetValuesDataBase();
-        String password = get.getPassword(codeEmp);
-        this.setVisible(true);
-        TextPassword.setText(password);
+        TextPassword.setText(this.password);
     }
 
     /**
@@ -47,7 +58,7 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
         ButtonAnnuler = new javax.swing.JButton();
         ButtonChange = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         TextPassword.setToolTipText("");
         TextPassword.setEnabled(false);
@@ -123,10 +134,12 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
     private void ButtonChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonChangeActionPerformed
         GetValuesDataBase update = new GetValuesDataBase();
         String newPassword = TextNewPassword.getText();
-        System.out.println(newPassword);
         boolean isChange = update.updatePassword(codeEmploye, newPassword);
         if (isChange) {
-            this.dispose();
+            for (IGestionPersonnelObserver obs : observers) {
+                obs.AfficherPersonnel();
+                this.dispose();
+            }
         } else {
 
         }
@@ -175,4 +188,18 @@ public class PersonnelReinitPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+    public JFrame getFrame() {
+        return this;
+    }
+    
+    @Override
+    public void registreObserver(IGestionPersonnelObserver observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unregistreObserver(IGestionPersonnelObserver observer) {
+        this.observers.remove(observer);
+    }
 }

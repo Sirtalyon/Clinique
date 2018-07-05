@@ -16,20 +16,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Administrateur
- */
+ */  
 public class GestionPersonnelCOntroller implements IControler, IGestionPersonnelObserver{
     private GestionPersonnel viewGestionPersonnel;
     private static GestionPersonnelCOntroller gestionPersonnelControler;
     private IMediator gestionPersonnelMediator;
     private List<Personnel> listPersonnel = new ArrayList<>();
     private GetValuesDataBase getPersonnel = new GetValuesDataBase();
-
     private GestionPersonnelCOntroller() {
     }
     
@@ -67,12 +67,11 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
 
     @Override
     public void AfficherPersonnel() {
+        Afficher();
     }
 
     private void Afficher(){
         try {
-            //String result = session.getRechercheClientFrameSession().getRechercheTextField().getText();
-            //listClient = rechercheClient.rechercheClient(result);
             listPersonnel = getPersonnel.getAll();
             FilleTable(listPersonnel);
         } catch (Exception ex) {
@@ -87,11 +86,14 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
             model.setRowCount(0);
 
             for (Personnel personnel : listPersonnel) {
-                model.addRow(new Object[]{
-                    personnel.getNom(),
-                    personnel.getRole(),
-                    changeMDP(personnel.getMotDePase())
-                });
+                if(!personnel.isArchive())
+                {
+                    model.addRow(new Object[]{
+                        personnel.getNom(),
+                        personnel.getRole(),
+                        changeMDP(personnel.getMotDePase())
+                    });
+                }
             }
             viewGestionPersonnel.getTablePersonnel().setModel(model);
         } catch (Exception ex) {
@@ -111,23 +113,69 @@ public class GestionPersonnelCOntroller implements IControler, IGestionPersonnel
     
     @Override
     public void AjouterPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        gestionPersonnelMediator.AjoutPersonnel();
     }
 
     @Override
     public void SupprimerPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean isSupp = SupprPersonnel();
+        if(isSupp)
+        {
+            Afficher();
+        }
     }
 
+    private Boolean SupprPersonnel(){
+        GetValuesDataBase get = new GetValuesDataBase();
+        int row = viewGestionPersonnel.getTablePersonnel().getSelectedRow();
+        String nom = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 0).toString();
+        String role = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 1).toString();
+        String password = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 2).toString();
+        String codeEmp = get.getCodeEmp(nom, role);
+        boolean isSupp = get.archivePersonnel(codeEmp);
+        if(isSupp)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+    
     @Override
     public void ReinitPasswordPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GetValuesDataBase get = new GetValuesDataBase();
+        int row = viewGestionPersonnel.getTablePersonnel().getSelectedRow();
+        String nom = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 0).toString();
+        String role = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 1).toString();
+        String codeEmp = get.getCodeEmp(nom, role);
+        String password = get.getPassword(codeEmp);
+        gestionPersonnelMediator.ModifierMotDePasse(password, codeEmp);
     }
 
+    private void reinit(){
+        GetValuesDataBase get = new GetValuesDataBase();
+        int row = viewGestionPersonnel.getTablePersonnel().getSelectedRow();
+        String nom = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 0).toString();
+        String role = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 1).toString();
+        String password = viewGestionPersonnel.getTablePersonnel().getModel().getValueAt(row, 2).toString();
+        String codeEmp = get.getCodeEmp(nom, role);
+    }
+    
     @Override
     public void initView() {
         viewGestionPersonnel = new GestionPersonnel();
-        //   Afficher();
+        Afficher();
+    }
+
+    @Override
+    public JFrame getFrame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initView(String password, String codeEmp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
