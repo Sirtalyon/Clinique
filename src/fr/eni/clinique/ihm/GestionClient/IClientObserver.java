@@ -15,7 +15,7 @@ public interface IClientObserver {
     
     public void AjoutClient();
 
-    public void AjoutAnimal();
+    public void AjoutAnimal(String nomClient);
 
     public void SupprimerClient();
 

@@ -6,6 +6,7 @@
 package fr.eni.clinique.ihm.Controller.Mediator;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -17,8 +18,14 @@ public interface IControler {
     void setMediator(IMediator mediator);
     
     void initView();
+        
+    void initView(String password, String codeEmp);
+        
+    void initView(String nomClient);
     
     JPanel getPanel();
     
     JDialog getDialogue();
+    
+    JFrame getFrame();
 }

@@ -143,31 +143,24 @@ public class GestionPersonnel extends javax.swing.JPanel implements IObservable<
 
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        personnel.initFrame();
+        for (IGestionPersonnelObserver obs : observers) {
+            obs.AjouterPersonnel();
+        }
         
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonReinitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReinitActionPerformed
-        // TODO add your handling code here:
+        for (IGestionPersonnelObserver obs : observers) {
+            obs.ReinitPasswordPersonnel();
+        }
         
-        GetValuesDataBase get = new GetValuesDataBase();
-        int row = TablePersonnel.getSelectedRow();
-        String nom = TablePersonnel.getModel().getValueAt(row, 0).toString();
-        String role = TablePersonnel.getModel().getValueAt(row, 1).toString();
-        String password = TablePersonnel.getModel().getValueAt(row, 2).toString();
-        String codeEmp = get.getCodeEmp(nom, role);
-        PersonnelReinitPassword init = new PersonnelReinitPassword();
-        init.initFrame(codeEmp);
+        
     }//GEN-LAST:event_buttonReinitActionPerformed
 
     private void buttonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDelActionPerformed
-        GetValuesDataBase get = new GetValuesDataBase();
-        int row = TablePersonnel.getSelectedRow();
-        String nom = TablePersonnel.getModel().getValueAt(row, 0).toString();
-        String role = TablePersonnel.getModel().getValueAt(row, 1).toString();
-        String password = TablePersonnel.getModel().getValueAt(row, 2).toString();
-        String codeEmp = get.getCodeEmp(nom, role);
-        boolean isSupp = get.archivePersonnel(codeEmp);
+        for (IGestionPersonnelObserver obs : observers) {
+            obs.SupprimerPersonnel();
+        }
     }//GEN-LAST:event_buttonDelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -190,7 +183,7 @@ public class GestionPersonnel extends javax.swing.JPanel implements IObservable<
     }    
     
     public JPanel getPanel() {
-        return this;
+        return PanelGestionPersonnel;
     }  
 
     public JTable getTablePersonnel() {

@@ -5,15 +5,21 @@
  */
 package fr.eni.clinique.ihm.Controller.Mediator;
 
+import fr.eni.clinique.bo.Animal;
 import fr.eni.clinique.bo.Client;
+import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.AjoutClientControler;
+import fr.eni.clinique.ihm.Controller.AddPersonnelController;
+import fr.eni.clinique.ihm.Controller.AjoutAnimalController;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
 import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import fr.eni.clinique.ihm.GestionClient.AjoutClient;
+import fr.eni.clinique.ihm.Controller.ReinitPasswordController;
+import java.util.List;
 import javax.swing.JFrame;
 
 /**
@@ -30,6 +36,9 @@ public class ApplicationMediator implements IMediator {
     private ConnexionControler connexion;
     private RechercheClientControler rechercheClientControler;
     private AjoutClientControler ajoutClientControler;
+    private ReinitPasswordController reinitPasswordController;
+    private AddPersonnelController addPersonnelController;
+    private AjoutAnimalController ajoutAnimalController;
 
     public ApplicationMediator() {
         connexionControler = ConnexionControler.getInstance();
@@ -39,6 +48,9 @@ public class ApplicationMediator implements IMediator {
         gestionPersonnelCOntroller = GestionPersonnelCOntroller.getInstance();
         rechercheClientControler = RechercheClientControler.getInstance();
         ajoutClientControler = AjoutClientControler.getInstance();
+        reinitPasswordController = ReinitPasswordController.getInstance();
+        addPersonnelController = AddPersonnelController.getInstance();
+        ajoutAnimalController = AjoutAnimalController.getInstance();
     }
 
     /* 
@@ -71,6 +83,11 @@ public class ApplicationMediator implements IMediator {
         clientControler.setPrenomCli(infoClient.getPrenomClient());
         clientControler.setCodePostalNomCli(infoClient.getCodePostal());
         clientControler.setVilleCli(infoClient.getVille());
+        clientControler.setVilleCli(infoClient.getVille());  
+        GetValuesDataBase get = new GetValuesDataBase();
+        Client client = get.getClient(infoClient.getNomClient(), infoClient.getPrenomClient());
+        List<Animal> animaux = get.getAnimaux(String.valueOf(client.getCodeClient()));
+        clientControler.setTableauAnimal(animaux);
     }
 
     @Override
@@ -137,7 +154,7 @@ public class ApplicationMediator implements IMediator {
 
     @Override
     public void AjoutPersonnel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        addPersonnelController.initView();
     }
 
     @Override
@@ -146,8 +163,8 @@ public class ApplicationMediator implements IMediator {
     }
 
     @Override
-    public void ModifierMotDePasse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ModifierMotDePasse(String password, String codeEmp) {
+        reinitPasswordController.initView(password, codeEmp);
     }
 
 
@@ -168,4 +185,16 @@ public class ApplicationMediator implements IMediator {
     public JFrame getFrameVeterinaire() {
         return veterinaireController.getFrame();
     }
+
+    @Override
+    public void AfficherPersonnel() {
+        gestionPersonnelCOntroller.AfficherPersonnel();
+    }
+
+    @Override
+    public void AjouterAnimal(String nomClient) {
+        ajoutAnimalController.initView(nomClient);
+    }
+
+
 }

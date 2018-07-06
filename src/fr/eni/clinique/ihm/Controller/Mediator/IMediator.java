@@ -30,6 +30,8 @@ public interface IMediator {
     public void SupprimerClinet();
     
     public void ValiderClient();
+    
+    public void AjouterAnimal(String nomClient);
 
     /* 
     Clinique Veterinaire
@@ -60,7 +62,9 @@ public interface IMediator {
     
     public void SupprimerPersonnel();
     
-    public void ModifierMotDePasse();
+    public void ModifierMotDePasse(String password, String codeEmp);
+    
+    public void AfficherPersonnel();
     /* 
     Connexion
      */
@@ -69,5 +73,6 @@ public interface IMediator {
     public void ValiderConnexion();
 
     public void AfficherInfoRechercheClient(Client InfoClient);
+    
 
 }
