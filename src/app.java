@@ -1,6 +1,7 @@
 
 import fr.eni.clinique.ihm.CliniqueVeterinaire;
 import fr.eni.clinique.ihm.Controller.AddPersonnelController;
+import fr.eni.clinique.ihm.Controller.AjoutAnimalController;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
@@ -31,7 +32,9 @@ public class app {
         GestionPersonnelCOntroller personnelController = GestionPersonnelCOntroller.getInstance();
         ReinitPasswordController reinitController = ReinitPasswordController.getInstance();
         AddPersonnelController addPersonnelController = AddPersonnelController.getInstance();
+        AjoutAnimalController ajoutAnimalController = AjoutAnimalController.getInstance();
         
+        ajoutAnimalController.setMediator(app);
         addPersonnelController.setMediator(app);
         connexionControler.setMediator(app);
         cliniqueVeterinaireController.setMediator(app);

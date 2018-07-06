@@ -5,11 +5,10 @@
  */
 package fr.eni.clinique.ihm.Controller;
 
+import fr.eni.clinique.ihm.AnimauxPanel;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
-import fr.eni.clinique.ihm.GestionPersonnel.IGestionPersonnelObserver;
-import fr.eni.clinique.ihm.GestionPersonnel.PersonnelAdd;
-import fr.eni.clinique.ihm.GestionPersonnel.PersonnelReinitPassword;
+import fr.eni.clinique.ihm.GestionClient.IClientObserver;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,41 +17,41 @@ import javax.swing.JPanel;
  *
  * @author Administrateur
  */
-public class AddPersonnelController implements IControler, IGestionPersonnelObserver{
+public class AjoutAnimalController implements IControler, IClientObserver{
 
-    private PersonnelAdd viewAddPErsonnel;
-    private IMediator gestionPersonnelMediator;
-    private static AddPersonnelController addPersonnelController;
+    private AnimauxPanel viewAnimal;
+    private IMediator animalMediator;
+    private static AjoutAnimalController addAnimal;
     
-    public AddPersonnelController(){
+    public AjoutAnimalController(){
         
     }
     
-    public static synchronized AddPersonnelController getInstance() {
-        if (addPersonnelController == null) {
-            addPersonnelController = new AddPersonnelController();
+    public static synchronized AjoutAnimalController getInstance() {
+        if (addAnimal == null) {
+            addAnimal = new AjoutAnimalController();
         }
-        return addPersonnelController;
+        return addAnimal;
     }
 
-    public static synchronized AddPersonnelController getObserver() {
-        if (addPersonnelController == null) {
-            addPersonnelController = new AddPersonnelController();
+    public static synchronized AjoutAnimalController getObserver() {
+        if (addAnimal == null) {
+            addAnimal = new AjoutAnimalController();
         }
-        return addPersonnelController;
+        return addAnimal;
     }
     
     @Override
     public void setMediator(IMediator mediator) {
         if (mediator != null) {
-            this.gestionPersonnelMediator = mediator;
+            this.animalMediator = mediator;
         }
     }
 
     @Override
     public void initView() {        
-        viewAddPErsonnel = new PersonnelAdd();
-        viewAddPErsonnel.setVisible(true);
+        viewAnimal = new AnimauxPanel();
+        viewAnimal.setVisible(true);
     }
 
     @Override
@@ -72,32 +71,48 @@ public class AddPersonnelController implements IControler, IGestionPersonnelObse
 
     @Override
     public JFrame getFrame() {
-       return viewAddPErsonnel;
+        return viewAnimal;
     }
 
     @Override
-    public void AfficherPersonnel() {
-        gestionPersonnelMediator.AfficherPersonnel();
-    }
-
-    @Override
-    public void AjouterPersonnel() {
-        initView();
-    }
-
-    @Override
-    public void SupprimerPersonnel() {
+    public void AfficherRecherche() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void ReinitPasswordPersonnel() {
+    public void AjoutClient() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void AjoutAnimal(String nomClient) {
+        initView();
+    }
+
+    @Override
+    public void SupprimerClient() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ValiderChangement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void AnnulerChangement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void EditerAnimal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void initView(String nomClient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        viewAnimal = new AnimauxPanel(nomClient);
+        viewAnimal.setVisible(true);
     }
     
 }

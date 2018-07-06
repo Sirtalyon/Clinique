@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class AnimauxPanel extends javax.swing.JFrame {
 
+    String nomClient;
     /**
      * Creates new form AnimauxPanel
      */
@@ -24,6 +25,14 @@ public class AnimauxPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         InitFrame();
     }
+    
+    public AnimauxPanel(String nomClient) {
+        initComponents();
+        setLocationRelativeTo(null);
+        InitFrame();
+        this.nomClient = nomClient;
+        
+    }
 
     public void InitFrame(){
         GetValuesDataBase getRace = new GetValuesDataBase();
@@ -31,7 +40,6 @@ public class AnimauxPanel extends javax.swing.JFrame {
         for (Race race : ani) {
             ComboRace.addItem(race.getRace());
         }
-        TextCode.setText("6");
     }
     
     /**
@@ -46,13 +54,11 @@ public class AnimauxPanel extends javax.swing.JFrame {
         AddAnimal = new javax.swing.JButton();
         AnnulerAnimal = new javax.swing.JButton();
         TextClient = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        TextCode = new javax.swing.JTextField();
         TextNom = new javax.swing.JTextField();
         TextCouleur = new javax.swing.JTextField();
         ComboEspece = new javax.swing.JComboBox<>();
@@ -61,7 +67,7 @@ public class AnimauxPanel extends javax.swing.JFrame {
         ComboSexe = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajouter Animal");
         setResizable(false);
 
@@ -73,8 +79,11 @@ public class AnimauxPanel extends javax.swing.JFrame {
         });
 
         AnnulerAnimal.setText("Annuler");
-
-        jLabel1.setText("Code");
+        AnnulerAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnnulerAnimalActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nom");
 
@@ -85,8 +94,6 @@ public class AnimauxPanel extends javax.swing.JFrame {
         jLabel5.setText("Tatouage");
 
         jLabel6.setText("Race");
-
-        TextCode.setEnabled(false);
 
         ComboEspece.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chat", "Chien" }));
         ComboEspece.addActionListener(new java.awt.event.ActionListener() {
@@ -116,34 +123,32 @@ public class AnimauxPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(268, 268, 268)
-                        .addComponent(ComboSexe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ComboSexe, 0, 182, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextTatouage))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TextCouleur, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ComboEspece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ComboRace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TextCode, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(224, 224, 224)
-                                .addComponent(jLabel7)))
-                        .addGap(188, 190, Short.MAX_VALUE)))
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(TextTatouage))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(30, 30, 30)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TextCouleur, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(ComboEspece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(ComboRace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -158,10 +163,6 @@ public class AnimauxPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(TextCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TextNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,9 +179,9 @@ public class AnimauxPanel extends javax.swing.JFrame {
                     .addComponent(ComboRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(TextTatouage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(TextTatouage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,8 +196,9 @@ public class AnimauxPanel extends javax.swing.JFrame {
         else
             sexe = "A";
         GetValuesDataBase addAnimal = new GetValuesDataBase();
-        boolean ok = addAnimal.addAnimal(TextNom.getText(), sexe, TextCouleur.getText(), ComboRace.getSelectedItem().toString(), ComboEspece.getSelectedItem().toString(), TextCode.getText(), TextTatouage.getText(), false);
-        if(ok) this.dispose();
+        boolean ok = addAnimal.addAnimal(TextNom.getText(), sexe, TextCouleur.getText(), ComboRace.getSelectedItem().toString(), ComboEspece.getSelectedItem().toString(), " ", TextTatouage.getText(), false);
+        if(ok)
+            this.dispose();
     }//GEN-LAST:event_AddAnimalActionPerformed
 
     private void ComboEspeceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboEspeceActionPerformed
@@ -207,6 +209,10 @@ public class AnimauxPanel extends javax.swing.JFrame {
             ComboRace.addItem(race.getRace());
         }
     }//GEN-LAST:event_ComboEspeceActionPerformed
+
+    private void AnnulerAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnulerAnimalActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_AnnulerAnimalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,11 +256,9 @@ public class AnimauxPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboRace;
     private javax.swing.JComboBox<String> ComboSexe;
     private javax.swing.JTextField TextClient;
-    private javax.swing.JTextField TextCode;
     private javax.swing.JTextField TextCouleur;
     private javax.swing.JTextField TextNom;
     private javax.swing.JTextField TextTatouage;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

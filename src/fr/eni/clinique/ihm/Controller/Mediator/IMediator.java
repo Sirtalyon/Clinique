@@ -27,6 +27,8 @@ public interface IMediator {
     public void AfficherAjoutClient();
 
     public void SupprimerClinet();
+    
+    public void AjouterAnimal(String nomClient);
 
     /* 
     Clinique Veterinaire

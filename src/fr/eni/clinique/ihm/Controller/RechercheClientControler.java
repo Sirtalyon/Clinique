@@ -135,7 +135,7 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
         cli.setPrenomClient(prenom);
         cli.setCodePostal(codePostal);
         cli.setVille(ville);
-
+        
         return cli;
     }
 
@@ -153,6 +153,11 @@ public class RechercheClientControler implements IControler, IRechercheClientObs
 
     @Override
     public void initView(String password, String codeEmp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initView(String nomClient) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

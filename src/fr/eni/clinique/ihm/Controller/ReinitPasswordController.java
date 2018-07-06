@@ -96,6 +96,11 @@ public class ReinitPasswordController implements IControler, IGestionPersonnelOb
         viewReinit = new PersonnelReinitPassword();
         viewReinit.setVisible(true);
     }
+
+    @Override
+    public void initView(String nomClient) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

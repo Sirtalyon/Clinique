@@ -5,14 +5,20 @@
  */
 package fr.eni.clinique.ihm.Controller;
 
+import fr.eni.clinique.bo.Animal;
+import fr.eni.clinique.bo.Client;
 import fr.eni.clinique.ihm.Controller.Mediator.IControler;
 import fr.eni.clinique.ihm.Controller.Mediator.IMediator;
 import fr.eni.clinique.ihm.GestionClient.ClientPanel;
 import fr.eni.clinique.ihm.GestionClient.IClientObserver;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -57,8 +63,8 @@ public class ClientControler implements IControler, IClientObserver {
     }
 
     @Override
-    public void AjoutAnimal() {
-        //Ajout Animal.
+    public void AjoutAnimal(String nomClient) {
+        clientMediator.AjouterAnimal(nomClient);
     }
 
     @Override
@@ -117,6 +123,41 @@ public class ClientControler implements IControler, IClientObserver {
     public void setCodePostalNomCli(String codePostalCli) {
         viewCLient.getCodePostalTextField().setText(codePostalCli);
     }
+    
+    public void setTableauAnimal(List<Animal> animaux) {
+        remplirTaleauAnimal(animaux);
+    }
+    
+    private void remplirTaleauAnimal(List<Animal> animaux) {
+        try {
+            FilleTable(animaux);
+        } catch (Exception ex) {
+            Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void FilleTable(List<Animal> animaux) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) viewCLient.getAnimalTable().getModel();
+
+            model.setRowCount(0);
+
+            for (Animal animal : animaux) {
+                model.addRow(new Object[]{
+                    animal.getCodeAnimal(),
+                    animal.getNomAnimal(),
+                    animal.getSexe(),
+                    animal.getCouleur(),
+                    animal.getRace(),
+                    animal.getEspece(),
+                    animal.getTatouage()
+                });
+            }
+            viewCLient.getAnimalTable().setModel(model);
+        } catch (Exception ex) {
+            Logger.getLogger(RechercheClientControler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public JFrame getFrame() {
@@ -125,6 +166,11 @@ public class ClientControler implements IControler, IClientObserver {
 
     @Override
     public void initView(String password, String codeEmp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void initView(String nomClient) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

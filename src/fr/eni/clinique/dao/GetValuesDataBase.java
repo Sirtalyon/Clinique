@@ -160,6 +160,38 @@ public class GetValuesDataBase {
             return null;
         }
     }
+    
+    public List<Animal> getAnimaux(String codeClient) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        List<Animal> animaux = new ArrayList<>();
+        Animal animal = new Animal();
+        try {
+
+            stm = connect.prepareStatement("select * from Animaux where CodeClient='" + codeClient + "'");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                animal = new Animal();
+                animal.setNomAnimal(rs.getString("NomAnimal"));
+                animal.setSexe(rs.getString("Sexe"));
+                animal.setCouleur(rs.getString("Couleur"));
+                animal.setRace(rs.getString("Race"));
+                animal.setEspece(rs.getString("Espece"));
+                animal.setTatouage(rs.getString("Tatouage"));
+                animal.setArchive(rs.getBoolean("Archive"));
+                animaux.add(animal);
+
+            }
+            return animaux;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public boolean addPersonnel(String user, String role, String password) {
         ConnexionDataBase co = new ConnexionDataBase();
@@ -229,6 +261,34 @@ public class GetValuesDataBase {
 
             }
             return clients;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public Client getClient(String nom, String prenom) {
+        ConnexionDataBase co = new ConnexionDataBase();
+        Connection connect = co.getCo();
+        PreparedStatement stm;
+        ResultSet rs;
+        Client cli = new Client();
+        try {
+
+            stm = connect.prepareStatement("select * from Clients where NomClient='" + nom + "' and PrenomClient='" + prenom + "'");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                cli = new Client();
+                cli.setNomClient(rs.getString("NomClient"));
+                cli.setPrenomClient(rs.getString("PrenomClient"));
+                cli.setCodePostal(rs.getString("CodePostal"));
+                cli.setVille(rs.getString("Ville"));
+                cli.setCodeClient(rs.getInt("CodeClient"));
+
+            }
+            return cli;
 
         } catch (SQLException ex) {
             Logger.getLogger(GetValuesDataBase.class.getName()).log(Level.SEVERE, null, ex);

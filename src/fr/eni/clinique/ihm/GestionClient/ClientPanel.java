@@ -9,6 +9,7 @@ import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.IObservable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import jiconfont.icons.FontAwesome;
 import jiconfont.swing.IconFontSwing;
@@ -405,7 +406,7 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
     //Ajout Animal
     private void AjouterBoutonTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouterBoutonTableActionPerformed
         for (IClientObserver obs : observers) {
-            obs.AjoutAnimal();
+            obs.AjoutAnimal(NomTextField.getText());
         }
     }//GEN-LAST:event_AjouterBoutonTableActionPerformed
     //Ajout Client
@@ -449,6 +450,16 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
         return AdresseTextField;
     }
 
+    public JTable getAnimalTable() {
+        return AnimalTable;
+    }
+
+    public void setAnimalTable(JTable AnimalTable) {
+        this.AnimalTable = AnimalTable;
+    }
+
+    
+    
     public void setAdresseTextField(JTextField AdresseTextField) {
         this.AdresseTextField = AdresseTextField;
     }
@@ -533,6 +544,8 @@ public class ClientPanel extends javax.swing.JPanel implements IObservable<IClie
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     @Override
     public void registreObserver(IClientObserver observer) {
         this.observers.add(observer);

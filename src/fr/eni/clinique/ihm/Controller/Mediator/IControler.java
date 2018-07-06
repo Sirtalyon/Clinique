@@ -20,6 +20,8 @@ public interface IControler {
     void initView();
         
     void initView(String password, String codeEmp);
+        
+    void initView(String nomClient);
     
     JPanel getPanel();
     

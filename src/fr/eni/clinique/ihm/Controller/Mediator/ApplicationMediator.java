@@ -5,15 +5,19 @@
  */
 package fr.eni.clinique.ihm.Controller.Mediator;
 
+import fr.eni.clinique.bo.Animal;
 import fr.eni.clinique.bo.Client;
+import fr.eni.clinique.dao.GetValuesDataBase;
 import fr.eni.clinique.ihm.Connexion;
 import fr.eni.clinique.ihm.Controller.AddPersonnelController;
+import fr.eni.clinique.ihm.Controller.AjoutAnimalController;
 import fr.eni.clinique.ihm.Controller.ClientControler;
 import fr.eni.clinique.ihm.Controller.CliniqueVeterinaireController;
 import fr.eni.clinique.ihm.Controller.ConnexionControler;
 import fr.eni.clinique.ihm.Controller.GestionPersonnelCOntroller;
 import fr.eni.clinique.ihm.Controller.RechercheClientControler;
 import fr.eni.clinique.ihm.Controller.ReinitPasswordController;
+import java.util.List;
 import javax.swing.JFrame;
 
 /**
@@ -31,6 +35,7 @@ public class ApplicationMediator implements IMediator {
     private RechercheClientControler rechercheClientControler;
     private ReinitPasswordController reinitPasswordController;
     private AddPersonnelController addPersonnelController;
+    private AjoutAnimalController ajoutAnimalController;
 
     public ApplicationMediator() {
         connexionControler = ConnexionControler.getInstance();
@@ -41,6 +46,7 @@ public class ApplicationMediator implements IMediator {
         rechercheClientControler = RechercheClientControler.getInstance();
         reinitPasswordController = ReinitPasswordController.getInstance();
         addPersonnelController = AddPersonnelController.getInstance();
+        ajoutAnimalController = AjoutAnimalController.getInstance();
     }
 
     /* 
@@ -72,7 +78,11 @@ public class ApplicationMediator implements IMediator {
         clientControler.setNomCli(infoClient.getNomClient());
         clientControler.setPrenomCli(infoClient.getPrenomClient());
         clientControler.setCodePostalNomCli(infoClient.getCodePostal());
-        clientControler.setVilleCli(infoClient.getVille());        
+        clientControler.setVilleCli(infoClient.getVille());  
+        GetValuesDataBase get = new GetValuesDataBase();
+        Client client = get.getClient(infoClient.getNomClient(), infoClient.getPrenomClient());
+        List<Animal> animaux = get.getAnimaux(String.valueOf(client.getCodeClient()));
+        clientControler.setTableauAnimal(animaux);
     }
 
     /* 
@@ -167,6 +177,11 @@ public class ApplicationMediator implements IMediator {
     @Override
     public void AfficherPersonnel() {
         gestionPersonnelCOntroller.AfficherPersonnel();
+    }
+
+    @Override
+    public void AjouterAnimal(String nomClient) {
+        ajoutAnimalController.initView(nomClient);
     }
 
 
